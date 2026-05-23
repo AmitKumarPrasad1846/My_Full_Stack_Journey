@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Layout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --pcolor: rgba(64, 19, 19, 0.781);
+            --scolor: #3b2222; /* Changed to white for better contrast */
+            --tcolor: #555;
+            --f1size: 10px;
+            --f2size: 13px;
+            --f3size: 17px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--pcolor);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--scolor);
+            width: 400px;
+            min-height: 80vh;
+            border-radius: var(--f1size);
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(221, 225, 15, 0.739);
+        }
+
+        .image {
+            width: 100%;
+            padding-bottom: 15px;
+        }
+
+        .image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--f1size);
+            box-shadow: 5px 10px 25px rgb(149, 51, 51);
+        }
+
+        .capsules {
+            display: flex;
+            /* gap is a property which is use for creating a gutter between rows or columns  */
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .capsules span {
+            border: 2px solid rgb(251, 219, 9);
+            border-radius: var(--f3size);
+            padding: 5px 13px;
+            font-weight: 600;
+            color: rgb(169, 78, 78);
+        }
+        .capsules span:hover{
+            background-color: rgb(169, 78, 78);
+            color: yellow;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .heading {
+            font-size: var(--f3size);
+            margin: 10px 0;
+        }
+
+        .heading h1 {
+            font-size: 24px;
+            text-align: center;
+            color: rgb(169, 78, 78);
+        }
+
+        .content {
+            font-size: var(--f3size);
+            color: var(--tcolor);
+            text-align: center;
+            margin: 10px 0;
+            color: rgb(251, 219, 9);
+        }
+
+        .btn {
+            border: none;
+            border-radius: var(--f3size);
+            background-color: rgb(251, 219, 9);
+            font-size: 15px;
+            margin-top: 15px;
+            padding: 10px 20px;
+            color: rgb(69, 12, 12);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: rgb(169, 78, 78);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="image">
+            <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1msMIx?w=0&h=0&q=60&m=6&f=jpg&u=t"
+                alt="Rock like Mountain in Night">
+        </div>
+        <div class="capsules">
+            <span>About</span>
+            <span>Contact</span>
+        </div>
+        <div class="heading">
+            <h1>Amit Kumar Prasad</h1>
+        </div>
+        <div class="content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi harum voluptatibus perspiciatis fugit
+            ad quis error suscipit quo voluptas...
+        </div>
+        <button class="btn">Read More</button>
+    </div>
+</body>
+
+</html>

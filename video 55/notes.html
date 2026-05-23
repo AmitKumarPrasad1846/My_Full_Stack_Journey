@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Basics | Quick Reference</title>
+    <style>
+        :root {
+            --primary: #2d3436;
+            --secondary: #0984e3;
+            --accent: #00cec9;
+            --light: #f5f6fa;
+            --dark: #2f3640;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Fira Code', monospace, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        h3 {
+            color: var(--primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .note {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .code-block {
+            background-color: #2d3436;
+            color: #f5f6fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .keyword {
+            color: #fd79a8;
+            font-weight: bold;
+        }
+
+        .string {
+            color: #55efc4;
+        }
+
+        .comment {
+            color: #636e72;
+            font-style: italic;
+        }
+
+        .number {
+            color: #74b9ff;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--dark);
+            color: white;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>JavaScript Basics</h1>
+            <p class="subtitle">Essential concepts for JavaScript developers</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2>Variables & Declaration</h2>
+
+            <div class="grid">
+                <div class="card">
+                    <h3><span class="keyword">let</span> Declaration</h3>
+                    <div class="code-block">
+                        <span class="keyword">let</span> a = <span class="number">5</span>; <span class="comment">//
+                            Block-scoped</span>
+                    </div>
+                    <p>Block-scoped variable that can be reassigned.</p>
+                </div>
+
+                <div class="card">
+                    <h3><span class="keyword">const</span> Declaration</h3>
+                    <div class="code-block">
+                        <span class="keyword">const</span> PI = <span class="number">3.14</span>; <span
+                            class="comment">// PI = 3.15 → Error</span>
+                    </div>
+                    <p>Block-scoped constant that cannot be reassigned.</p>
+                </div>
+            </div>
+
+            <div class="note">
+                <h3>Variable Naming Rules:</h3>
+                <ul>
+                    <li>Case-sensitive (<code>a ≠ A</code>)</li>
+                    <li>Cannot start with numbers (<code>55a</code> is invalid)</li>
+                    <li>Can include <code>_</code> or <code>$</code> (e.g., <code>_a</code>)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Data Types (7 Primitive Types)</h2>
+
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Example</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Number</td>
+                    <td><code>let age = 23;</code></td>
+                    <td>Integer or floating-point numbers</td>
+                </tr>
+                <tr>
+                    <td>String</td>
+                    <td><code>let name = "Amit";</code></td>
+                    <td>Textual data</td>
+                </tr>
+                <tr>
+                    <td>Boolean</td>
+                    <td><code>const isStudent = true;</code></td>
+                    <td>Logical true/false</td>
+                </tr>
+                <tr>
+                    <td>Undefined</td>
+                    <td><code>let x;</code></td>
+                    <td>Default value of uninitialized variables</td>
+                </tr>
+                <tr>
+                    <td>Null</td>
+                    <td><code>let y = null;</code></td>
+                    <td>Intentional empty value</td>
+                </tr>
+                <tr>
+                    <td>Symbol</td>
+                    <td><code>const id = Symbol();</code></td>
+                    <td>Unique identifiers</td>
+                </tr>
+                <tr>
+                    <td>BigInt</td>
+                    <td><code>const bigNum = 123n;</code></td>
+                    <td>Large integers</td>
+                </tr>
+            </table>
+
+            <div class="note">
+                <h3>Checking Types</h3>
+                <div class="code-block">
+                    console.<span class="keyword">log</span>(<span class="keyword">typeof</span> age); <span
+                        class="comment">// "number"</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Objects</h2>
+
+            <div class="code-block">
+                <span class="keyword">let</span> person = {
+                name: <span class="string">"Harry"</span>, <span class="comment">// Simple key</span>
+                <span class="string">"job code"</span>: <span class="number">5600</span>, <span class="comment">//
+                    Multi-word keys need quotes</span>
+                is_handsome: <span class="keyword">true</span> <span class="comment">// Boolean value</span>
+                };
+            </div>
+
+            <h3>Dynamic Properties</h3>
+            <p>Objects can be modified after creation:</p>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="code-block">
+                        person.salary = <span class="string">"100crores"</span>; <span class="comment">// Add new
+                            property</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="code-block">
+                        person.salary = <span class="string">"500crores"</span>; <span class="comment">// Update
+                            property</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Scope</h2>
+
+            <div class="code-block">
+                {
+                <span class="keyword">let</span> a = <span class="number">66</span>; <span class="comment">// Only
+                    exists inside this block</span>
+                }
+                console.<span class="keyword">log</span>(a); <span class="comment">// Error (if 'a' was defined
+                    outside)</span>
+            </div>
+
+            <div class="note">
+                <h3>var is function-scoped (avoid in modern JS)</h3>
+                <p>Always prefer <code>let</code> and <code>const</code> over <code>var</code>.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Best Practices</h2>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Variable Declaration</h3>
+                    <ul>
+                        <li>Use <code>const</code> by default</li>
+                        <li>Only use <code>let</code> if reassignment is needed</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Naming Conventions</h3>
+                    <ul>
+                        <li>Use camelCase (<code>userName</code>)</li>
+                        <li>Multi-word object keys need quotes (<code>"job code"</code>)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Tooling</h3>
+                    <ul>
+                        <li>Use linting tools to catch errors</li>
+                        <li>Watch for duplicate variable names</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Key Takeaways</h2>
+
+            <div class="note" style="background-color: #e3f2fd;">
+                <ul>
+                    <li>JavaScript is <strong>case-sensitive</strong></li>
+                    <li>Prefer <code>let</code>/<code>const</code> over <code>var</code></li>
+                    <li>Objects are <strong>mutable</strong> (properties can be added/changed dynamically)</li>
+                    <li>7 primitive data types in JavaScript</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>JavaScript Basics Quick Reference | &copy; 2023</p>
+            <p>Bookmark this page for your daily JavaScript needs!</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete CSS Animations Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="body-wrapper">
+        <h1 class="main-heading">Complete CSS Animations Guide</h1>
+        <p class="main-heading-2"><strong>From Basic Concepts to Advanced Techniques</strong></p>
+
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <h2 class="section-heading">Introduction to CSS Animations</h2>
+            <p>CSS animations allow you to create smooth, visually appealing transitions and movements on your web pages
+                without JavaScript. They're performant, easy to implement, and can significantly enhance user experience
+                when used properly.</p>
+
+            <div class="table-wrapper">
+                <h3 class="sub-heading">When to Use Animations</h3>
+                <table>
+                    <tr>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>Drawing attention</td>
+                        <td>Pulsing call-to-action buttons</td>
+                    </tr>
+                    <tr>
+                        <td>Visual feedback</td>
+                        <td>Button press effects</td>
+                    </tr>
+                    <tr>
+                        <td>State changes</td>
+                        <td>Showing/hiding elements</td>
+                    </tr>
+                    <tr>
+                        <td>Page transitions</td>
+                        <td>Smooth route changes</td>
+                    </tr>
+                    <tr>
+                        <td>Loading indicators</td>
+                        <td>Spinners, progress bars</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Transition vs Animation -->
+        <section class="content-section">
+            <h2 class="section-heading">Transition vs Animation</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Transition</th>
+                        <th>Animation</th>
+                    </tr>
+                    <tr>
+                        <td>Triggered by events (hover, focus etc.)</td>
+                        <td>Can run automatically or on page load</td>
+                    </tr>
+                    <tr>
+                        <td>Only animates between two states</td>
+                        <td>Can have multiple @keyframes (multi-step)</td>
+                    </tr>
+                    <tr>
+                        <td>Simpler implementation</td>
+                        <td>More powerful and flexible</td>
+                    </tr>
+                    <tr>
+                        <td>Good for simple interactions</td>
+                        <td>Ideal for complex sequences</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="code-example">
+                <span class="code-comment">/* Transition example */</span><br>
+                <span class="code-selector">.button</span> {<br>
+                &nbsp;&nbsp;<span class="code-property">transition</span>: <span class="code-value">all 0.3s
+                    ease</span>;<br>
+                }<br><br>
+
+                <span class="code-comment">/* Animation example */</span><br>
+                <span class="code-selector">.box</span> {<br>
+                &nbsp;&nbsp;<span class="code-property">animation</span>: <span class="code-value">slideIn 1s ease 0.5s
+                    both</span>;<br>
+                }<br>
+                <span class="code-selector">@keyframes slideIn</span> {<br>
+                &nbsp;&nbsp;<span class="code-value">from</span> { <span class="code-property">transform</span>: <span
+                    class="code-value">translateX(-100%)</span>; }<br>
+                &nbsp;&nbsp;<span class="code-value">to</span> { <span class="code-property">transform</span>: <span
+                    class="code-value">translateX(0)</span>; }<br>
+                }
+            </div>
+        </section>
+
+        <!-- Animation Properties -->
+        <section class="content-section">
+            <h2 class="section-heading">Animation Properties</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Property</th>
+                        <th>Description</th>
+                        <th>Example Values</th>
+                    </tr>
+                    <tr>
+                        <td>animation-name</td>
+                        <td>Specifies the name of the @keyframes rule</td>
+                        <td>slideIn, fadeOut, bounce</td>
+                    </tr>
+                    <tr>
+                        <td>animation-duration</td>
+                        <td>How long one cycle should take</td>
+                        <td>2s, 500ms, 0.5s</td>
+                    </tr>
+                    <tr>
+                        <td>animation-timing-function</td>
+                        <td>Speed curve of the animation</td>
+                        <td>ease, linear, ease-in-out</td>
+                    </tr>
+                    <tr>
+                        <td>animation-delay</td>
+                        <td>Delay before animation starts</td>
+                        <td>1s, 200ms, 0s</td>
+                    </tr>
+                    <tr>
+                        <td>animation-iteration-count</td>
+                        <td>How many times to play</td>
+                        <td>1, infinite, 3</td>
+                    </tr>
+                    <tr>
+                        <td>animation-direction</td>
+                        <td>Normal, reverse, or alternate</td>
+                        <td>normal, reverse, alternate</td>
+                    </tr>
+                    <tr>
+                        <td>animation-fill-mode</td>
+                        <td>Styles before/after animation</td>
+                        <td>none, forwards, backwards</td>
+                    </tr>
+                    <tr>
+                        <td>animation-play-state</td>
+                        <td>Pause or run the animation</td>
+                        <td>running, paused</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 class="sub-heading">Shorthand Syntax</h3>
+            <div class="code-example">
+                <span class="code-selector">.element</span> {<br>
+                &nbsp;&nbsp;<span class="code-property">animation</span>: <span class="code-value">name duration
+                    timing-function delay iteration-count direction fill-mode play-state</span>;<br>
+                }<br><br>
+
+                <span class="code-comment">/* Practical example */</span><br>
+                <span class="code-selector">.box</span> {<br>
+                &nbsp;&nbsp;<span class="code-property">animation</span>: <span class="code-value">pulse 2s ease-in-out
+                    0.5s infinite alternate</span>;<br>
+                }
+            </div>
+        </section>
+
+        <!-- Keyframes Deep Dive -->
+        <section class="content-section">
+            <h2 class="section-heading">@keyframes Rule</h2>
+            <p>The @keyframes rule is where you define what the animation should do at various points during its
+                sequence.</p>
+
+            <div class="code-example">
+                <span class="code-selector">@keyframes animationName</span> {<br>
+                &nbsp;&nbsp;<span class="code-value">0%</span> { <span class="code-property">property</span>: <span
+                    class="code-value">value</span>; }<br>
+                &nbsp;&nbsp;<span class="code-value">50%</span> { <span class="code-property">property</span>: <span
+                    class="code-value">value</span>; }<br>
+                &nbsp;&nbsp;<span class="code-value">100%</span> { <span class="code-property">property</span>: <span
+                    class="code-value">value</span>; }<br>
+                }<br><br>
+
+                <span class="code-comment">/* From/To syntax (equivalent to 0% and 100%) */</span><br>
+                <span class="code-selector">@keyframes fadeIn</span> {<br>
+                &nbsp;&nbsp;<span class="code-value">from</span> { <span class="code-property">opacity</span>: <span
+                    class="code-value">0</span>; }<br>
+                &nbsp;&nbsp;<span class="code-value">to</span> { <span class="code-property">opacity</span>: <span
+                    class="code-value">1</span>; }<br>
+                }
+            </div>
+
+            <h3 class="sub-heading">Keyframe Percentage Tips</h3>
+            <ul>
+                <li>You can have as many percentage points as needed (5%, 30%, 77%, etc.)</li>
+                <li>Percentages don't need to be in order - the browser will sort them</li>
+                <li>If multiple keyframes share the same properties, you can group them:
+                    <code>0%, 20%, 100% { opacity: 1; }</code></li>
+                <li>You can animate multiple properties simultaneously</li>
+            </ul>
+        </section>
+
+        <!-- Practical Examples -->
+        <section class="content-section">
+            <h2 class="section-heading">Practical Animation Examples</h2>
+
+            <div class="example-container">
+                <div class="example-card">
+                    <h3 class="sub-heading">Bounce Effect</h3>
+                    <div class="animation-box bounce">Bounce!</div>
+                    <div class="code-example">
+                        <span class="code-selector">@keyframes bounce</span> {<br>
+                        &nbsp;&nbsp;<span class="code-value">0%, 100%</span> { <span
+                            class="code-property">transform</span>: <span class="code-value">translateY(0)</span>; }<br>
+                        &nbsp;&nbsp;<span class="code-value">50%</span> { <span class="code-property">transform</span>:
+                        <span class="code-value">translateY(-30px)</span>; }<br>
+                        }<br><br>
+
+                        <span class="code-selector">.element</span> {<br>
+                        &nbsp;&nbsp;<span class="code-property">animation</span>: <span class="code-value">bounce 2s
+                            infinite</span>;<br>
+                        }
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="sub-heading">Fade In</h3>
+                    <div class="animation-box fade-in">Fade In</div>
+                    <div class="code-example">
+                        <span class="code-selector">@keyframes fadeIn</span> {<br>
+                        &nbsp;&nbsp;<span class="code-value">from</span> { <span class="code-property">opacity</span>:
+                        <span class="code-value">0</span>; }<br>
+                        &nbsp;&nbsp;<span class="code-value">to</span> { <span class="code-property">opacity</span>:
+                        <span class="code-value">1</span>; }<br>
+                        }<br><br>
+
+                        <span class="code-selector">.element</span> {<br>
+                        &nbsp;&nbsp;<span class="code-property">animation</span>: <span class="code-value">fadeIn 3s
+                            ease-in</span>;<br>
+                        }
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="sub-heading">Continuous Rotation</h3>
+                    <div class="animation-box rotate">Rotate</div>
+                    <div class="code-example">
+                        <span class="code-selector">@keyframes rotate</span> {<br>
+                        &nbsp;&nbsp;<span class="code-value">from</span> { <span class="code-property">transform</span>:
+                        <span class="code-value">rotate(0deg)</span>; }<br>
+                        &nbsp;&nbsp;<span class="code-value">to</span> { <span class="code-property">transform</span>:
+                        <span class="code-value">rotate(360deg)</span>; }<br>
+                        }<br><br>
+f
+                        <span class="code-selector">.element</span> {<br>
+                        &nbsp;&nbsp;<span class="code-property">animation</span>: <span class="code-value">rotate 4s
+                            linear infinite</span>;<br>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Considerations -->
+        <section class="content-section">
+            <h2 class="section-heading">Animation Performance</h2>
+            <p>For smooth animations that don't slow down your page, follow these guidelines:</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Do</th>
+                        <th>Don't</th>
+                    </tr>
+                    <tr>
+                        <td>Use <code>transform</code> and <code>opacity</code></td>
+                        <td>Animate <code>width</code>, <code>height</code>, or <code>margin</code></td>
+                    </tr>
+                    <tr>
+                        <td>Use <code>will-change</code> for complex animations</td>
+                        <td>Animate too many elements simultaneously</td>
+                    </tr>
+                    <tr>
+                        <td>Keep animations short (under 300ms for UI)</td>
+                        <td>Create long, complex animations</td>
+                    </tr>
+                    <tr>
+                        <td>Use <code>requestAnimationFrame</code> for JS animations</td>
+                        <td>Use <code>setInterval</code> for animations</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 class="sub-heading">Best Properties to Animate</h3>
+            <p>These properties are most efficient for animations:</p>
+            <ul>
+                <li><code>transform</code> (translate, scale, rotate)</li>
+                <li><code>opacity</code></li>
+                <li><code>filter</code> (with caution)</li>
+                <li><code>clip-path</code> (modern browsers)</li>
+            </ul>
+        </section>
+
+        <!-- Advanced Techniques -->
+        <section class="content-section">
+            <h2 class="section-heading">Advanced Techniques</h2>
+
+            <h3 class="sub-heading">Chaining Animations</h3>
+            <p>Use animation-delay to sequence multiple animations:</p>
+            <div class="code-example">
+                <span class="code-selector">.box1</span> { <span class="code-property">animation</span>: <span
+                    class="code-value">fadeIn 1s forwards</span>; }<br>
+                <span class="code-selector">.box2</span> { <span class="code-property">animation</span>: <span
+                    class="code-value">fadeIn 1s 1s forwards</span>; }<br>
+                <span class="code-selector">.box3</span> { <span class="code-property">animation</span>: <span
+                    class="code-value">fadeIn 1s 2s forwards</span>; }
+            </div>
+
+            <h3 class="sub-heading">Animation Events in JavaScript</h3>
+            <p>You can detect when animations start, end, or repeat:</p>
+            <div class="code-example">
+                <span class="code-keyword">const</span> element = <span
+                    class="code-function">document.querySelector</span>(<span
+                    class="code-value">'.animated'</span>);<br><br>
+
+                element.<span class="code-function">addEventListener</span>(<span
+                    class="code-value">'animationstart'</span>, () => {<br>
+                &nbsp;&nbsp;console.<span class="code-function">log</span>(<span class="code-value">'Animation
+                    started'</span>);<br>
+                });<br><br>
+
+                element.<span class="code-function">addEventListener</span>(<span
+                    class="code-value">'animationend'</span>, () => {<br>
+                &nbsp;&nbsp;console.<span class="code-function">log</span>(<span class="code-value">'Animation
+                    finished'</span>);<br>
+                });
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 CSS Animations Masterclass | Created with ♥ for web developers By SARK Brothers</p>
+        </footer>
+    </div>
+</body>
+
+</html>

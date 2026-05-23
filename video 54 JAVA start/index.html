@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Basics Tutorial</title>
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 2px solid #e1e4e8;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background: #3498db;
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.4rem;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Content Styles */
+        p,
+        li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+        }
+
+        .code-keyword {
+            color: #c678dd;
+        }
+
+        .code-string {
+            color: #98c379;
+        }
+
+        .code-comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        .code-value {
+            color: #d19a66;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Tip Box */
+        .tip {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card-header {
+                font-size: 1.2rem;
+            }
+
+            p,
+            li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Basics</h1>
+            <p>A beginner's guide to JavaScript programming</p>
+        </header>
+
+        <div class="card">
+            <div class="card-header">Step 1: What is JavaScript?</div>
+            <div class="card-body">
+                <p>JavaScript ek scripting language hai jo websites ko interactive banata hai.</p>
+                <ul>
+                    <li><strong>HTML:</strong> Structure deta hai</li>
+                    <li><strong>CSS:</strong> Design and style deta hai</li>
+                    <li><strong>JavaScript:</strong> Brain & Action deta hai</li>
+                </ul>
+                <div class="tip">
+                    <strong>Example Uses:</strong> Jab aap kisi button pe click karte hai, light/dark mode toggle hota
+                    hai,
+                    form validation hota hai, sliders chalte hai - sab JavaScript ke wajah se.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Step 2: JavaScript ko kaise use karein?</div>
+            <div class="card-body">
+                <p>HTML ke andar JS likhne ke 3 tarike hote hain:</p>
+
+                <div class="code-block">
+                    <span class="code-comment">&lt;!-- Method 1: Inline JS --&gt;</span><br>
+                    &lt;button <span class="code-keyword">onclick</span>=<span class="code-string">"alert('Hello
+                        Sigma')"</span>&gt;<br>
+                    &nbsp;&nbsp;Click Me<br>
+                    &lt;/button&gt;
+                </div>
+
+                <div class="code-block">
+                    <span class="code-comment">&lt;!-- Method 2: Internal JS --&gt;</span><br>
+                    &lt;script&gt;<br>
+                    &nbsp;&nbsp;<span class="code-keyword">console</span>.<span class="code-keyword">log</span>(<span
+                        class="code-string">"Hello from Internal JS!"</span>);<br>
+                    &lt;/script&gt;
+                </div>
+
+                <div class="code-block">
+                    <span class="code-comment">&lt;!-- Method 3: External JS --&gt;</span><br>
+                    &lt;script <span class="code-keyword">src</span>=<span
+                        class="code-string">"script.js"</span>&gt;&lt;/script&gt;
+                </div>
+
+                <div class="tip">
+                    <strong>Best Practice:</strong> External JS use karein (code alag file me likho)
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Step 3: Variables in JavaScript</div>
+            <div class="card-body">
+                <p>Variables = Containers to store data. <br> 3 types:</p>
+
+                <div class="code-block">
+                    <span class="code-keyword">var</span> name = <span class="code-string">"Amit"</span>; <span
+                        class="code-comment">// Old style, avoid now</span><br>
+                    <span class="code-keyword">let</span> age = <span class="code-value">21</span>; <span
+                        class="code-comment">// Modern, changeable</span><br>
+                    <span class="code-keyword">const</span> PI = <span class="code-value">3.14</span>; <span
+                        class="code-comment">// Constant, fixed</span>
+                </div>
+
+                <p><strong>Rules:</strong></p>
+                <ul>
+                    <li>Variable name can't start with number</li>
+                    <li>Can include letters, $, and _</li>
+                    <li>Case-sensitive (Name ≠ name)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Step 4: Data Types</div>
+            <div class="card-body">
+                <p>JavaScript ke primitive data types:</p>
+
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>String</td>
+                        <td>"Amit", 'Hi'</td>
+                    </tr>
+                    <tr>
+                        <td>Number</td>
+                        <td>25, 3.14</td>
+                    </tr>
+                    <tr>
+                        <td>Boolean</td>
+                        <td>true, false</td>
+                    </tr>
+                    <tr>
+                        <td>Null</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>Undefined</td>
+                        <td>undefined</td>
+                    </tr>
+                </table>
+
+                <div class="code-block">
+                    <span class="code-keyword">let</span> name = <span class="code-string">"Amit"</span>; <span
+                        class="code-comment">// String</span><br>
+                    <span class="code-keyword">let</span> age = <span class="code-value">21</span>; <span
+                        class="code-comment">// Number</span><br>
+                    <span class="code-keyword">let</span> isSigma = <span class="code-keyword">true</span>; <span
+                        class="code-comment">// Boolean</span><br>
+                    <span class="code-keyword">let</span> power = <span class="code-keyword">null</span>; <span
+                        class="code-comment">// Null</span><br>
+                    <span class="code-keyword">let</span> future; <span class="code-comment">// Undefined</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log("Hey there! This is Amit Kumar Prasad")
+    </script>
+</body>
+
+</html>

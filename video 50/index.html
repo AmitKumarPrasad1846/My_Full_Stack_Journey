@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This page is about the CSS filter property" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <title>CSS Filter</title>
+    <style>
+        :root {
+            --playfair-display: "Playfair Display", serif;
+            --poppins: "Poppins", sans-serif;
+            --anton: "Anton", sans-serif;
+            --oswald: "Oswald", sans-serif;
+            --cascadia-code: "Cascadia Code", monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #262626;
+            color: white;
+            font-family: var(--poppins);
+            padding-bottom: 50px;
+        }
+
+        .heading {
+            font-family: var(--oswald);
+            font-size: 2rem;
+            text-align: center;
+            margin: 20px;
+            padding: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .heading:hover {
+            transform: translateX(5px);
+            color: #e1cb05;
+        }
+
+        .heading-text {
+            text-align: center;
+            margin: 10px auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            width: 90%;
+            max-width: 700px;
+        }
+
+        .syntax {
+            font-size: 1.5rem;
+            font-family: var(--oswald);
+            color: #00f0ff;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .coding-box {
+            border-left: 4px solid white;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #1e1e1e;
+            font-family: var(--cascadia-code);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease-in, background-color 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .coding-box:hover {
+            border-left: 6px solid rgb(254, 0, 0);
+            transform: translateX(3px);
+            background-color: #262626;
+        }
+
+        .css-style {
+            padding-left: 50px;
+        }
+
+        .keyword {
+            color: #ce9178;
+        }
+
+        .string {
+            color: #569cd6;
+        }
+
+        .value {
+            color: #b606b3;
+        }
+
+        ul.filter-list {
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.8;
+            font-size: 1rem;
+            padding: 0 20px;
+        }
+
+        ul.filter-list li {
+            margin-bottom: 10px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1rem;
+            color: #bbb;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="heading">What are CSS Filters?</h2>
+    <p class="heading-text">
+        CSS Filters allow you to apply visual effects to elements, especially images, videos, or any DOM element. <br />
+        Think of them as Instagram filters... but coded.
+    </p>
+
+    <h3 class="syntax">SYNTAX:</h3>
+    <div class="coding-box">
+        selector {<br />
+        <div class="css-style">
+            <span class="keyword">filter</span>: <span class="string">filter-function</span>(<span
+                class="value">value</span>);
+        </div>
+        }
+    </div>
+
+    <p class="heading-text">
+        You can also <b>chain Multiple filters</b> in a single line:
+    </p>
+
+    <div class="coding-box">
+        selector {<br />
+        <div class="css-style">
+            <span class="keyword">filter</span>:
+            <span class="string">grayscale</span>(<span class="value">100%</span>)
+            <span class="string">blur</span>(<span class="value">2px</span>)
+            <span class="string">brightness</span>(<span class="value">120%</span>);
+        </div>
+        }
+    </div>
+
+    <h2 class="heading">Common Filter Functions:</h2>
+    <ul class="filter-list">
+        <li><b>blur(px)</b> → Adds a soft blur to the element. Eg: <code>blur(4px)</code></li>
+        <li><b>brightness(%)</b> → Adjusts brightness. Eg: <code>brightness(120%)</code></li>
+        <li><b>contrast(%)</b> → Controls contrast. Eg: <code>contrast(200%)</code></li>
+        <li><b>grayscale(%)</b> → Converts image to black and white. Eg: <code>grayscale(100%)</code></li>
+        <li><b>sepia(%)</b> → Gives warm brownish tint. Eg: <code>sepia(100%)</code></li>
+        <li><b>invert(%)</b> → Inverts colors like a photo negative. Eg: <code>invert(100%)</code></li>
+        <li><b>hue-rotate(deg)</b> → Rotates color wheel. Eg: <code>hue-rotate(90deg)</code></li>
+        <li><b>saturate(%)</b> → Boosts color intensity. Eg: <code>saturate(300%)</code></li>
+        <li><b>drop-shadow()</b> → Adds a styled shadow. Eg: <code>drop-shadow(4px 4px 10px red)</code></li>
+    </ul>
+
+    <p class="footer-note">Ab filters ke sath images ko style dena bacha kuch kaam nahi hai, bas filter lagao aur chamka
+        do duniya! 🚀</p>
+</body>
+
+</html>

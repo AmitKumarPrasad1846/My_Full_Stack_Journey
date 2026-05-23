@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transitions Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Cascadia+Code:wght@400;700&family=Oswald:wght@400;700&family=Poppins:wght@400;700&family=Bungee&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --primary-light: #b47aff;
+            --primary-dark: #5a189a;
+            --secondary: #ff9e00;
+            --secondary-light: #ffc046;
+            --dark: #0e0c11;
+            --darker: #08060a;
+            --light: #f8f9fa;
+            --code-bg: #1e1a24;
+            --success: #4caf50;
+            --transition-time: 0.4s;
+            --neon-glow: 0 0 10px var(--primary-light), 0 0 20px var(--primary);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            font-family: "Poppins", sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 158, 0, 0.1) 0%, transparent 20%);
+        }
+
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: rgba(30, 26, 36, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                linear-gradient(45deg, transparent 65%, rgba(138, 43, 226, 0.05) 65%),
+                linear-gradient(-45deg, transparent 65%, rgba(255, 158, 0, 0.05) 65%);
+            background-size: 30px 30px;
+            z-index: -1;
+            animation: gridScroll 100s linear infinite;
+        }
+
+        @keyframes gridScroll {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(30px, 30px);
+            }
+        }
+
+        .main-heading {
+            font-family: "Bungee", cursive;
+            font-size: 3.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 15px;
+        }
+
+        .main-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .heading {
+            font-size: 2rem;
+            font-family: "Oswald", sans-serif;
+            margin: 35px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            color: var(--secondary-light);
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .heading::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+            font-family: "Cascadia Code", monospace;
+        }
+
+        .answer {
+            margin: 20px 0;
+            padding: 0 15px;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .syntax {
+            border-left: 5px solid var(--secondary);
+            border-radius: 8px;
+            display: block;
+            background-color: var(--darker);
+            color: #7fffd4;
+            margin: 25px 0;
+            padding: 20px;
+            font-family: "Cascadia Code", monospace;
+            font-size: 1.1rem;
+            overflow-x: auto;
+            box-shadow:
+                inset 0 0 10px rgba(0, 0, 0, 0.5),
+                0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .syntax:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                inset 0 0 15px rgba(0, 0, 0, 0.7),
+                0 8px 25px rgba(0, 0, 0, 0.4);
+            border-left-color: var(--primary-light);
+        }
+
+        .syntax::before {
+            content: 'CSS';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 3px 10px;
+            font-size: 0.8rem;
+            font-family: "Cascadia Code", monospace;
+            border-bottom-left-radius: 8px;
+        }
+
+        .breakdown {
+            text-align: center;
+            font-size: 2.5rem;
+            font-family: "Anton", sans-serif;
+            font-weight: 400;
+            margin: 40px 0;
+            color: var(--secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .breakdown::before,
+        .breakdown::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary));
+        }
+
+        .breakdown::before {
+            left: 0;
+        }
+
+        .breakdown::after {
+            right: 0;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        /* Enhanced table design */
+        .table-container {
+            margin: 40px 0;
+            overflow-x: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden;
+            background: linear-gradient(145deg, #1e1a24, #2a2433);
+            position: relative;
+        }
+
+        table::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, transparent 50%, rgba(255, 158, 0, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        table tr {
+            transition: all 0.3s ease;
+        }
+
+        table tr:hover {
+            background-color: rgba(138, 43, 226, 0.15);
+            transform: translateX(8px);
+        }
+
+        th,
+        td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background-color: var(--primary-dark);
+            color: white;
+            font-family: "Oswald", sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        td {
+            font-size: 1.05rem;
+            position: relative;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            color: var(--secondary-light);
+            font-family: "Cascadia Code", monospace;
+        }
+
+        .td-example {
+            display: block;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Interactive examples section */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .example-card {
+            background: linear-gradient(145deg, #1e1a24, #2a2433);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .example-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to bottom right,
+                    transparent 45%,
+                    rgba(138, 43, 226, 0.1) 50%,
+                    transparent 55%);
+            transform: rotate(30deg);
+            transition: all 0.6s ease;
+        }
+
+        .example-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border-color: rgba(138, 43, 226, 0.4);
+        }
+
+        .example-card:hover::before {
+            transform: rotate(30deg) translate(20px, 20px);
+        }
+
+        .example-title {
+            font-family: "Oswald", sans-serif;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .example-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            transition: width 0.4s ease;
+        }
+
+        .example-card:hover .example-title::after {
+            width: 100%;
+        }
+
+        .demo-box {
+            width: 100%;
+            height: 120px;
+            background-color: var(--primary);
+            margin: 20px 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all var(--transition-time) ease;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.2),
+                    transparent);
+            transition: all 0.6s ease;
+        }
+
+        .demo-box:hover::before {
+            left: 100%;
+        }
+
+        /* Button styles */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+            justify-content: center;
+        }
+
+        button {
+            padding: 14px 28px;
+            font-size: 1.2rem;
+            font-family: "Poppins", sans-serif;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary-light));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        button:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(138, 43, 226, 0.5);
+        }
+
+        button:hover::before {
+            opacity: 1;
+        }
+
+        button:active {
+            transform: translateY(2px) scale(0.98);
+        }
+
+        /* Special hover effect */
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            transition: transform 0.6s ease;
+        }
+
+        button:hover::after {
+            transform: translateX(200%) skewX(-15deg);
+        }
+
+        /* Best practices list */
+        .best-practices {
+            margin: 40px 0;
+            padding: 0;
+            list-style: none;
+            counter-reset: practice-counter;
+        }
+
+        .best-practices li {
+            counter-increment: practice-counter;
+            margin-bottom: 20px;
+            padding-left: 50px;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .best-practices li::before {
+            content: counter(practice-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 35px;
+            height: 35px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Oswald", sans-serif;
+            font-size: 1.1rem;
+            box-shadow: 0 3px 10px rgba(138, 43, 226, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .best-practices li:hover::before {
+            background-color: var(--secondary);
+            color: var(--dark);
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* Playground section */
+        .playground {
+            margin: 50px 0;
+            padding: 30px;
+            background: rgba(30, 26, 36, 0.7);
+            border-radius: 15px;
+            border: 2px dashed rgba(138, 43, 226, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .playground:hover {
+            border-color: rgba(138, 43, 226, 0.6);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.2);
+        }
+
+        .playground-title {
+            font-family: "Bungee", cursive;
+            font-size: 2rem;
+            color: var(--secondary-light);
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-family: "Cascadia Code", monospace;
+            color: var(--secondary-light);
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--darker);
+            border: 1px solid var(--primary-dark);
+            border-radius: 8px;
+            color: white;
+            font-family: "Poppins", sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        select:focus,
+        input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+
+        .playground-box {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            background-color: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.5s ease;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .main-heading {
+                font-size: 2.5rem;
+            }
+
+            .heading {
+                font-size: 1.8rem;
+            }
+
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation classes for examples */
+        .width-transition {
+            transition: width 0.5s ease-in-out;
+        }
+
+        .width-transition:hover {
+            width: 50%;
+        }
+
+        .color-transition {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .color-transition:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .transform-transition {
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .transform-transition:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .multiple-transition {
+            transition: all 0.5s ease;
+        }
+
+        .multiple-transition:hover {
+            background-color: var(--success);
+            transform: skewX(-10deg);
+            border-radius: 25px;
+        }
+
+        .delay-transition {
+            transition: all 0.4s ease 0.3s;
+        }
+
+        .delay-transition:hover {
+            background-color: var(--secondary-light);
+            transform: translateY(-10px);
+        }
+
+        .timing-transition {
+            transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <h1 class="main-heading">CSS Transitions Playground</h1>
+
+        <h3 class="heading">What are CSS Transitions?</h3>
+        <p class="answer">CSS transitions allow you to create smooth, gradual animations between different states of an
+            element. They provide control over how property changes occur over time, making your interfaces feel more
+            dynamic and responsive without JavaScript.</p>
+
+        <q class="syntax">transition: property duration timing-function delay | none | initial | inherit;</q>
+
+        <h3 class="heading breakdown">Transition Properties</h3>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Purpose</th>
+                    <th>Example Values</th>
+                </tr>
+                <tr>
+                    <td>property</td>
+                    <td>Specifies which CSS property to animate <span class="td-example">(use "all" for multiple
+                            properties)</span></td>
+                    <td>background-color, transform, opacity, all</td>
+                </tr>
+                <tr>
+                    <td>duration</td>
+                    <td>How long the animation takes to complete</td>
+                    <td>0.3s, 1s, 200ms</td>
+                </tr>
+                <tr>
+                    <td>timing-function</td>
+                    <td>Controls the acceleration curve of the animation <span class="td-example">(how the animation
+                            progresses over time)</span></td>
+                    <td>ease, linear, ease-in-out, cubic-bezier()</td>
+                </tr>
+                <tr>
+                    <td>delay</td>
+                    <td>How long to wait before starting the animation</td>
+                    <td>0s, 0.5s, 1s</td>
+                </tr>
+            </table>
+        </div>
+
+        <h3 class="heading">Interactive Examples</h3>
+        <p class="answer">Hover over or click on these boxes to see different transition effects in action:</p>
+
+        <div class="examples-grid">
+            <div class="example-card">
+                <h4 class="example-title">Basic Transition</h4>
+                <div class="demo-box">Hover Me</div>
+                <q class="syntax">transition: all 0.4s ease;</q>
+            </div>
+
+            <div class="example-card">
+                <h4 class="example-title">Width Transition</h4>
+                <div class="demo-box width-transition">Width Change</div>
+                <q class="syntax">transition: width 0.5s ease-in-out;</q>
+            </div>
+
+            <div class="example-card">
+                <h4 class="example-title">Color Transition</h4>
+                <div class="demo-box color-transition">Color Change</div>
+                <q class="syntax">transition: background-color 0.3s, color 0.3s;</q>
+            </div>
+
+            <div class="example-card">
+                <h4 class="example-title">Transform Transition</h4>
+                <div class="demo-box transform-transition">Rotate & Scale</div>
+                <q class="syntax">transition: transform 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);</q>
+            </div>
+
+            <div class="example-card">
+                <h4 class="example-title">Multiple Properties</h4>
+                <div class="demo-box multiple-transition">Multiple Effects</div>
+                <q class="syntax">transition: all 0.5s ease;</q>
+            </div>
+
+            <div class="example-card">
+                <h4 class="example-title">With Delay</h4>
+                <div class="demo-box delay-transition">Delayed Start</div>
+                <q class="syntax">transition: all 0.4s ease 0.3s;</q>
+            </div>
+        </div>
+
+        <h3 class="heading">Timing Functions</h3>
+        <p class="answer">Timing functions determine the pace of change during the transition. Click these buttons to
+            experience different timing functions:</p>
+
+        <div class="button-group">
+            <button style="transition-timing-function: ease;">ease (default)</button>
+            <button style="transition-timing-function: linear;">linear</button>
+            <button style="transition-timing-function: ease-in;">ease-in</button>
+            <button style="transition-timing-function: ease-out;">ease-out</button>
+            <button style="transition-timing-function: ease-in-out;">ease-in-out</button>
+            <button style="transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);">bouncy effect</button>
+        </div>
+
+        <div class="playground">
+            <h4 class="playground-title">Transition Playground</h4>
+            <p class="answer">Customize the transition properties below and see the result in real-time:</p>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label for="property">Property:</label>
+                    <select id="property">
+                        <option value="all">all</option>
+                        <option value="background-color">background-color</option>
+                        <option value="transform">transform</option>
+                        <option value="opacity">opacity</option>
+                        <option value="border-radius">border-radius</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="duration">Duration (seconds):</label>
+                    <input type="range" id="duration" min="0.1" max="2" step="0.1" value="0.5">
+                    <span id="duration-value">0.5s</span>
+                </div>
+
+                <div class="control-group">
+                    <label for="timing">Timing Function:</label>
+                    <select id="timing">
+                        <option value="ease">ease</option>
+                        <option value="linear">linear</option>
+                        <option value="ease-in">ease-in</option>
+                        <option value="ease-out">ease-out</option>
+                        <option value="ease-in-out">ease-in-out</option>
+                        <option value="cubic-bezier(0.68, -0.55, 0.265, 1.55)">bouncy</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="delay">Delay (seconds):</label>
+                    <input type="range" id="delay" min="0" max="1" step="0.1" value="0">
+                    <span id="delay-value">0s</span>
+                </div>
+            </div>
+
+            <div class="demo-box" id="playground-box">Click Me!</div>
+
+            <q class="syntax" id="generated-code">transition: all 0.5s ease 0s;</q>
+        </div>
+
+        <h3 class="heading">Best Practices</h3>
+        <ul class="best-practices">
+            <li>Use transitions for simple state changes (hover, focus, active, class changes)</li>
+            <li>Prefer transform and opacity for best performance (they don't trigger layout/paint)</li>
+            <li>Keep transition durations between 200ms-500ms for UI elements</li>
+            <li>Use consistent timing across your application for cohesive feel</li>
+            <li>Avoid transitioning layout properties like width/height (use transform: scale instead)</li>
+            <li>Consider using will-change for elements you know will be animated</li>
+            <li>Test animations on lower-powered devices to ensure performance</li>
+        </ul>
+    </div>
+
+    <script>
+        // Playground functionality
+        const playgroundBox = document.getElementById('playground-box');
+        const propertySelect = document.getElementById('property');
+        const durationSlider = document.getElementById('duration');
+        const durationValue = document.getElementById('duration-value');
+        const timingSelect = document.getElementById('timing');
+        const delaySlider = document.getElementById('delay');
+        const delayValue = document.getElementById('delay-value');
+        const generatedCode = document.getElementById('generated-code');
+
+        function updateTransition() {
+            const property = propertySelect.value;
+            const duration = durationSlider.value;
+            const timing = timingSelect.value;
+            const delay = delaySlider.value;
+
+            const transitionValue = `${property} ${duration}s ${timing} ${delay}s`;
+            playgroundBox.style.transition = transitionValue;
+
+            // Update displayed values
+            durationValue.textContent = `${duration}s`;
+            delayValue.textContent = `${delay}s`;
+
+            // Update code display
+            generatedCode.textContent = `transition: ${transitionValue};`;
+        }
+
+        // Set up event listeners
+        propertySelect.addEventListener('change', updateTransition);
+        durationSlider.addEventListener('input', updateTransition);
+        timingSelect.addEventListener('change', updateTransition);
+        delaySlider.addEventListener('input', updateTransition);
+
+        // Add click effect to playground box
+        playgroundBox.addEventListener('click', function () {
+            this.style.backgroundColor = getRandomColor();
+            this.style.transform = `rotate(${Math.random() * 20 - 10}deg) scale(${1 + Math.random() * 0.3})`;
+            this.style.borderRadius = `${Math.random() * 30}px`;
+        });
+
+        function getRandomColor() {
+            const colors = [
+                '#8a2be2', '#ff9e00', '#4caf50', '#2196F3',
+                '#E91E63', '#00BCD4', '#FF5722', '#9C27B0'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Initialize
+        updateTransition();
+    </script>
+</body>
+
+</html>

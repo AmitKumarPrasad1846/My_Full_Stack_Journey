@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 4 - Multi color nav bar</title>
+    <meta name="description" content="In this Session I am going to give you a sample of multi color nav bar">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: poppins, sans-serif;
+    }
+
+    body {
+        background-color: rgba(125, 96, 96, 0.82);
+        color: black;
+    }
+
+    /* header{
+        display: flex;
+        background-color: rgb(57, 45, 45);
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+    } */
+    header {
+        display: flex;
+        background-color: rgb(57, 45, 45);
+        align-items: center;
+        padding: 2px 3px;
+        /* thoda sa andar se space */
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        /* taaki upar rahe scroll pe */
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        margin-left: 10px;
+    }
+
+    /* nav ul li {
+        border: 1px solid rgba(0, 0, 0, 0);
+        border-radius: 15px;
+        padding: 5px 10px;
+        margin: 5px;
+    } */
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        border-radius: 15px;
+        padding: 5px 10px;
+        margin: 5px;
+        transition: 0.3s;
+    }
+
+    nav ul li:nth-child(1) a {
+        background-color: crimson;
+    }
+
+    nav ul li:nth-child(2) a {
+        background-color: darkorange;
+    }
+
+    nav ul li:nth-child(3) a {
+        background-color: gold;
+        color: black;
+    }
+
+    nav ul li:nth-child(4) a {
+        background-color: seagreen;
+    }
+
+    nav ul li:nth-child(5) a {
+        background-color: steelblue;
+    }
+
+    nav ul li:nth-child(6) a {
+        background-color: purple;
+    }
+
+    nav ul li a:hover {
+        color: rgb(57, 45, 45);
+        background-color: white;
+        transition: all 0.3s ease;
+    }
+
+    .logo img {
+        height: 50px;
+        margin: 3px;
+        padding: 3px;
+        border-radius: 50px;
+        align-items: center;
+    }
+
+    .main-content {
+        padding: 10px;
+        margin: 15px;
+        line-height: 1.5;
+    }
+
+    blockquote {
+        background-color: rgb(244, 244, 245);
+        color: red;
+        font-size: 20px;
+        border-left: 6px solid rgb(57, 45, 45);
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(61, 41, 41, 0.82);
+        margin: 5px 10px;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .main-content p q {
+        display: block;
+        background-color: white;
+        border-right: 6px solid rgb(57, 45, 45);
+        border-radius: 10px;
+        font-style: italic;
+        font-weight: bold;
+        text-align: right;
+        margin: 8px 10px;
+        padding: 8px;
+
+    }
+
+    footer {
+        text-align: center;
+        align-items: center;
+        background-color: rgb(57, 45, 45);
+        color: white;
+        padding: 5px 10px;
+        margin-top: 20px;
+        width: 100%;
+        height: 30px;
+        position: fixed;
+        bottom: 0;
+    }
+</style>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="SARK logo.png" alt="Brand logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Syllabus</a></li>
+                <li><a href="#">Join us</a></li>
+                <li><a href="#">Download</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main-content">
+        <h1>Hi there! This is Amit Kumar Prasad....</h1>
+        <p>I am creating my dream step by step after facing a lot of failure. My journey is like a sine curve, but
+            still I don't gave up and now, as you can see I stood again. You know a great man once said this
+            beautiful line....</p>
+        <blockquote cite="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam">
+            Fail doesn't mean you lost everything It means<br> <b>First Attempt In Learning</b>
+        </blockquote>
+        <p><q>Dr. APJ Abdul Kalam</q></p>
+
+    </div>
+    <footer>
+        &copy; copyright SARK 2025; All rights reserved
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Master CSS filter property with interactive examples" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+    <title>CSS Filter | Visual Guide</title>
+    <style>
+        :root {
+            --primary: #ff4d4d;
+            --secondary: #ff9999;
+            --dark-bg: #1a1a2e;
+            --darker-bg: #16213e;
+            --code-bg: #0f0f23;
+            --text-light: #e6e6e6;
+            --text-lighter: #ffffff;
+            --accent: #00dbde;
+            --montserrat: "Montserrat", sans-serif;
+            --raleway: "Raleway", sans-serif;
+            --fira-code: "Fira Code", monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            font-family: var(--raleway);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .heading {
+            font-family: var(--montserrat);
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 30px 0;
+            padding: 15px;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .heading::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .heading-text {
+            text-align: center;
+            margin: 20px auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            color: var(--secondary);
+        }
+
+        .syntax {
+            font-size: 1.5rem;
+            font-family: var(--montserrat);
+            color: var(--accent);
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+
+        .coding-box {
+            background: var(--code-bg);
+            border-radius: 8px;
+            margin: 30px auto;
+            padding: 20px;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .coding-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .css-style {
+            padding-left: 40px;
+            margin: 10px 0;
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .value {
+            color: #b5cea8;
+        }
+
+        .punctuation {
+            color: #d4d4d4;
+        }
+
+        .filter-list {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            list-style-type: none;
+        }
+
+        .filter-list li {
+            background: rgba(0, 219, 222, 0.1);
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            transition: transform 0.2s ease;
+        }
+
+        .filter-list li:hover {
+            transform: translateX(5px);
+            background: rgba(0, 219, 222, 0.15);
+        }
+
+        .filter-list code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: var(--fira-code);
+            color: var(--primary);
+        }
+
+        .interactive-demo {
+            background: var(--darker-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .demo-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .demo-box {
+            width: 300px;
+            height: 200px;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') center/cover;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        select {
+            padding: 8px 15px;
+            background: var(--code-bg);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-family: var(--fira-code);
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 1rem;
+            color: var(--secondary);
+            font-style: italic;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .heading {
+                font-size: 2rem;
+            }
+
+            .demo-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="heading">CSS Filter Property</h1>
+        <p class="heading-text">
+            CSS filters allow you to apply graphical effects like blurring, color shifting, and more to elements.
+            They're like Instagram filters but with code!
+        </p>
+
+        <h2 class="syntax">Basic Syntax</h2>
+        <div class="coding-box">
+            <span class="keyword">selector</span><span class="punctuation"> {</span><br />
+            <div class="css-style">
+                <span class="keyword">filter</span><span class="punctuation">: </span>
+                <span class="string">filter-function</span><span class="punctuation">(</span><span
+                    class="value">value</span><span class="punctuation">);</span>
+            </div>
+            <span class="punctuation">}</span>
+        </div>
+
+        <h2 class="syntax">Multiple Filters</h2>
+        <div class="coding-box">
+            <span class="keyword">selector</span><span class="punctuation"> {</span><br />
+            <div class="css-style">
+                <span class="keyword">filter</span><span class="punctuation">: </span>
+                <span class="string">grayscale</span><span class="punctuation">(</span><span
+                    class="value">50%</span><span class="punctuation">) </span>
+                <span class="string">blur</span><span class="punctuation">(</span><span class="value">2px</span><span
+                    class="punctuation">) </span>
+                <span class="string">brightness</span><span class="punctuation">(</span><span
+                    class="value">120%</span><span class="punctuation">);</span>
+            </div>
+            <span class="punctuation">}</span>
+        </div>
+
+        <div class="interactive-demo">
+            <h2 class="syntax">Try It Yourself</h2>
+            <div class="demo-container">
+                <div class="demo-box" id="filter-demo"></div>
+            </div>
+            <div class="controls">
+                <select id="filter-select" onchange="updateFilter()">
+                    <option value="none">No Filter</option>
+                    <option value="blur(5px)">Blur</option>
+                    <option value="brightness(150%)">Brightness</option>
+                    <option value="contrast(200%)">Contrast</option>
+                    <option value="grayscale(100%)">Grayscale</option>
+                    <option value="hue-rotate(90deg)">Hue Rotate</option>
+                    <option value="invert(100%)">Invert</option>
+                    <option value="sepia(100%)">Sepia</option>
+                    <option value="saturate(300%)">Saturate</option>
+                    <option value="drop-shadow(8px 8px 10px gray)">Drop Shadow</option>
+                </select>
+            </div>
+        </div>
+
+        <h2 class="syntax">Filter Functions</h2>
+        <ul class="filter-list">
+            <li><b>blur(px)</b> → Applies Gaussian blur <code>filter: blur(5px);</code></li>
+            <li><b>brightness(%)</b> → Adjusts brightness <code>brightness(150%)</code></li>
+            <li><b>contrast(%)</b> → Adjusts contrast <code>contrast(200%)</code></li>
+            <li><b>drop-shadow()</b> → Applies shadow effect <code>drop-shadow(8px 8px 10px gray)</code></li>
+            <li><b>grayscale(%)</b> → Converts to grayscale <code>grayscale(100%)</code></li>
+            <li><b>hue-rotate(deg)</b> → Shifts colors <code>hue-rotate(90deg)</code></li>
+            <li><b>invert(%)</b> → Inverts colors <code>invert(100%)</code></li>
+            <li><b>opacity(%)</b> → Sets transparency <code>opacity(50%)</code></li>
+            <li><b>saturate(%)</b> → Adjusts saturation <code>saturate(300%)</code></li>
+            <li><b>sepia(%)</b> → Applies sepia tone <code>sepia(100%)</code></li>
+        </ul>
+
+        <p class="footer-note">Pro Tip: Combine multiple filters for creative effects! 🎨</p>
+    </div>
+
+    <script>
+        function updateFilter() {
+            const demo = document.getElementById('filter-demo');
+            const filterSelect = document.getElementById('filter-select');
+            demo.style.filter = filterSelect.value;
+        }
+
+        // Initialize demo
+        document.addEventListener('DOMContentLoaded', function () {
+            updateFilter();
+        });
+    </script>
+</body>
+
+</html>

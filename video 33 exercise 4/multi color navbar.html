@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi color nav bar</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --color: rgb(214, 202, 202);
+        --seccolor: rgb(146, 146, 146);
+        --another-color: rgb(168, 204, 201);
+        --decoration-color: rgba(46, 11, 11, 0.952);
+        --main-color: rgb(224, 224, 224);
+        --defpad: 15px;
+        --defop: 0.5;
+    }
+
+    body {
+        background-color: var(--seccolor);
+    }
+
+    .nav {
+        background-color: var(--color);
+    }
+
+    .nav li:hover {
+        background-color: var(--another-color);
+        cursor: pointer;
+        border-radius: 20px;
+
+    }
+
+    ul {
+        display: flex;
+    }
+
+    ul li {
+        opacity: var(--defop);
+        list-style: none;
+        font-size: 25px;
+        margin: 10px;
+        padding: var(--defpad);
+    }
+
+    h1 {
+        text-align: center;
+        color: var(--decoration-color);
+    }
+
+    .jogi {
+        text-align: center;
+        margin: 23px 300px;
+        padding: var(--defpad);
+        font-style: inherit;
+        font-size: 20px;
+        color: rgb(129, 110, 110);
+        border: 5px solid var(--main-color);
+        height: auto;
+        width: 50vw;
+        background-color: var(--another-color);
+        border-radius: 25px;
+    }
+
+    .jogi p {
+        margin-top: 20px;
+    }
+</style>
+
+<body>
+    <div class="nav">
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+    <div class="jogi">
+        <h1>Bhupendra Jogi</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates suscipit animi vel quidem, perspiciatis
+            delectus illum eligendi totam minima aliquid quo placeat incidunt qui doloribus possimus sequi natus
+            repudiandae veritatis alias reiciendis sunt esse dolore ipsa sit. Nam corporis sit esse reiciendis corrupti,
+            vitae perspiciatis id eum labore distinctio consequatur autem sint! Omnis reprehenderit accusamus quaerat,
+            nam dolores culpa atque?
+        </p>
+    </div>
+</body>
+
+</html>

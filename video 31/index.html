@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS media queries</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: red;
+    }
+
+    /* @media not|only mediatype and (expressions) { 
+        CSS-Code; 
+    }*/
+
+    /* @media only screen and (max-width: 455px)*/
+    @media only screen and (orientation: landscape) {
+
+        /*in place of max-width we can also put min-width*/
+        body {
+            background-color: rgb(131, 3, 3);
+        }
+
+        .boxes {
+            flex-direction: column;
+        }
+    }
+
+    .box {
+        width: 344px;
+        height: 344px;
+        background-color: steelblue;
+        padding: 3px;
+        margin: 3px;
+    }
+
+    .boxes {
+        display: flex;
+    }
+</style>
+
+<body>
+    <!-- CSS media Queries -->
+    <h2 class="head" style="text-transform: capitalize;">this is a media query page!</h2>
+    <div>
+        Hey I am a ready body guy!
+    </div>
+    <div class="boxes">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>

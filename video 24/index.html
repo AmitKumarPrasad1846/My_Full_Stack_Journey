@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Shadows and Outlines</title>
+</head>
+<style>
+    /* Global Reset and Dark Theme */
+    body {
+        background-color: #121212;
+        color: #f0f0f0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 2rem;
+        line-height: 1.6;
+    }
+
+    code {
+        background-color: #1e1e1e;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: #ffb86c;
+    }
+
+    h1,
+    h4 {
+        color: #bb86fc;
+        text-shadow: 1px 1px 5px rgba(187, 134, 252, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    h1:hover,
+    h4:hover {
+        transform: scale(1.05);
+        text-shadow: 0 0 10px #bb86fc;
+    }
+
+    .answer {
+        background-color: #1f1f1f;
+        border-left: 5px solid #03dac6;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 6px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease;
+    }
+
+    .answer:hover {
+        transform: translateX(5px);
+        box-shadow: 0 5px 20px rgba(3, 218, 198, 0.4);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #1e1e1e;
+        color: #f0f0f0;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    caption {
+        font-size: 1.2rem;
+        color: #ff79c6;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    th,
+    td {
+        padding: 12px;
+        border: 1px solid #333;
+        text-align: left;
+    }
+
+    th {
+        background-color: #272727;
+        color: #03dac6;
+    }
+
+    tr:hover {
+        background-color: #2c2c2c;
+    }
+
+    ul {
+        list-style-type: square;
+        padding-left: 20px;
+        color: #c3f4ff;
+    }
+
+    blockquote {
+        border-left: 4px solid #ff79c6;
+        background-color: #1a1a1a;
+        padding: 10px 15px;
+        margin: 20px 0;
+        box-shadow: 0 4px 20px rgba(255, 121, 198, 0.2);
+        border-radius: 6px;
+    }
+
+    pre {
+        background-color: #000;
+        color: #00ff99;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+
+    .question {
+        position: relative;
+        padding-left: 30px;
+    }
+
+    .question::before {
+        content: "💡";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.2em;
+    }
+</style>
+
+<body>
+    <h1 class="question"><code>box-shadow</code> CSS property</h1>
+    <p class="answer"><code>box-shadow</code><code> creates a shadow outside an element.</p>
+    <p class="answer">Syntax:</p>
+    <p class="answer"><code>box-shadow: offset-x offset-y blur-radius spread-radius color;</code></p>
+    <!-- <p class="answer">Break down:</p> -->
+    <table border="2">
+        <caption>Breakdown</caption>
+        <tr>
+            <th>Part</th>
+            <th>Function</th>
+            <th>Example value</th>
+            <th>Effect</th>
+        </tr>
+        <tr>
+            <td><code>offset-x</code></td>
+            <td>It moves shadow horizontally.</td>
+            <td>5px</td>
+            <td>Moves right</td>
+        </tr>
+        <tr>
+            <td><code>offset-y</code></td>
+            <td>It moves shadow vertically.</td>
+            <td>10px</td>
+            <td>Moves down</td>
+        </tr>
+        <tr>
+            <td><code>blur-radius</code></td>
+            <td>It blur's the shadow.</td>
+            <td>15px</td>
+            <td>More blur = Soft shadow</td>
+        </tr>
+        <tr>
+            <td><code>spread-radius</code></td>
+            <td>It makes the shadow either big or small.</td>
+            <td>0px</td>
+            <td>Positive = Big shadow, Negative = Small shadow</td>
+        </tr>
+        <tr>
+            <td><code>color</code></td>
+            <td>Color of the shadow.</td>
+            <td>rgba(0, 0, 0, 0.5)</td>
+            <td>Black semi-transparent</td>
+        </tr>
+    </table>
+
+    <h4 class="question">Simple shadow</h4>
+    <p class="answer"><code>box-shadow: 5px 5px 10px gray;</code></p>
+    <ul>
+        <li>5px right, 5px down, blurred by 10px, color: gray</li>
+    </ul>
+    <h4 class="question">Inset shadow</h4>
+    <p class="answer"><code>box-shadow: inset 5px 5px 10px black;</code></p>
+    <ul>
+        <li>"inset" makes the shadow to go inside the box.[jaise box ke andar depth ho]</li>
+    </ul>
+    <h4 class="question">Multiple shadows on a single box</h4>
+    <p class="answer"><code>box-shadow: 2px 2px 5px red, -2px -2px 5px blue;</code></p>
+    <ul>
+        <li>You can add multi-color glow or a 3D effect to a single box.</li>
+    </ul>
+    <blockquote cite="tips for box shadow mastery">
+        <ul>
+            <li>Use <code>rgba()</code> for transparent shadow</li>
+            <li>try hover effects:</li>
+        </ul>
+        <p class="answer">
+        <pre>.card:hover {
+            box-shadow: 0px 15px 30px rgba(0,0,0,0.4);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            }</pre>
+        </p>
+    </blockquote>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display Properties Notes</title>
+    <style>
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
+            color: #333;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        h1,
+        h3,
+        h4,
+        h5 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            margin-top: 30px;
+            font-weight: 600;
+        }
+
+        .answer {
+            background-color: #ffffff;
+            border-left: 5px solid #3498db;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        ol.answer {
+            list-style-type: decimal;
+            padding-left: 40px;
+            background-color: #ffffff;
+        }
+
+        ol.answer li {
+            margin-bottom: 10px;
+        }
+
+        blockquote {
+            background-color: #eaf6ff;
+            border-left: 5px solid #3498db;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        blockquote ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        blockquote li {
+            margin-bottom: 8px;
+        }
+
+        b {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="question">CSS Display Properties:</h1>
+    <p class="answer">
+        The display property in CSS controls how an element appears on the page. It determines whether an element is
+        treated as a block, inline, or behaves differently based on its assigned value.
+    </p>
+
+    <h3 class="question">Block-Level Elements:</h3>
+    <p class="answer">
+        Block elements take up the full width of the container and start on a new line.
+    </p>
+
+    <h3 class="question">Inline Elements:</h3>
+    <p class="answer">
+        Inline elements do not break onto a new line and take up only as much width as necessary.
+    </p>
+
+    <h3 class="question">Table and List Display:</h3>
+    <p class="answer">
+        Certain elements can be displayed like tables or lists.
+    </p>
+
+    <h4 class="question">Special Cases:</h4>
+    <ol class="answer">
+        <li><b>display: none;</b> — Hides the element completely</li>
+        <li><b>display: contents;</b> — Removes the element but keeps its children</li>
+        <li><b>display: inherit;</b> — Inherits display value from its parent</li>
+    </ol>
+
+    <h5>Key Takeaway:</h5>
+    <blockquote cite="Key Takeaways">
+        <ul>
+            <li>Block elements span the full width and stack vertically.</li>
+            <li>Inline elements stay in the same line and only use needed width.</li>
+            <li>Flex and grid enable advanced layouts.</li>
+            <li><code>display: none;</code> hides an element completely.</li>
+        </ul>
+    </blockquote>
+</body>
+
+</html>

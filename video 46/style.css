@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Background Styling */
+body {
+    background: url(sunset-forest.jpg) no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
+}
+
+.body-wrapper {
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 1200px;
+    margin: 30px auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Typography */
+.main-heading {
+    font-family: "Oswald", sans-serif;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #ff9a3c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.main-heading-2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ffc93c;
+}
+
+.section-heading {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.2rem;
+    margin: 40px 0 20px;
+    color: #ff9a3c;
+    border-bottom: 2px solid #ff9a3c;
+    padding-bottom: 10px;
+}
+
+.sub-heading {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.5rem;
+    margin: 30px 0 15px;
+    color: #ffc93c;
+}
+
+/* Table Styling */
+.table-wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    overflow-x: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+th {
+    background-color: #ff9a3c;
+    color: white;
+    font-weight: 600;
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Content Sections */
+.content-section {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 30px 0;
+}
+
+/* Code Examples */
+.code-example {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: "Cascadia Code", monospace;
+    overflow-x: auto;
+    margin: 20px 0;
+    tab-size: 2;
+}
+
+.code-comment {
+    color: #6a9955;
+}
+
+.code-property {
+    color: #9cdcfe;
+}
+
+.code-value {
+    color: #ce9178;
+}
+
+.code-selector {
+    color: #d7ba7d;
+}
+
+/* Animation Examples */
+.animation-box {
+    width: 100px;
+    height: 100px;
+    background-color: #ff6b6b;
+    margin: 30px auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* Practical Examples Container */
+.example-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.example-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animation Classes - These will be used in our examples */
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+.fade-in {
+    animation: fadeIn 3s ease-in;
+}
+
+.rotate {
+    animation: rotate 4s linear infinite;
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.slide-in {
+    animation: slideIn 1.5s ease-out;
+}
+
+/* Keyframe Definitions */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

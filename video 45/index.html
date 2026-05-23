@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(14, 12, 17);
+            color: white;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .main-heading {
+            font-family: "Oswald", sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .heading {
+            font-size: 1.5rem;
+            font-family: "Oswald", sans-serif;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        .answer {
+            margin: 10px;
+            padding: 5px;
+        }
+
+        .syntax {
+            border-left: 5px solid rgb(212, 39, 212);
+            border-radius: 10px;
+            display: block;
+            background-color: rgb(49, 30, 71);
+            color: rgb(11, 231, 3);
+            margin: 10px;
+            padding: 15px;
+            font-family: "Cascadia Code", sans-serif;
+            font-style: italic;
+            width: 650px;
+            overflow-x: auto;
+        }
+
+        .breakdown {
+            text-align: center;
+            font-size: xx-large;
+            font-family: "Anton", sans-serif;
+            font-weight: 300;
+        }
+
+        /* designing table layout */
+
+        .table-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: auto;
+            width: 780px;
+        }
+
+        table {
+            border-collapse: separate;
+            border-radius: 10px;
+            border: 1px solid white;
+            border-spacing: 0;
+            overflow: hidden;
+            margin: 10px;
+            background-color: rgb(166, 120, 218);
+            color: black;
+
+        }
+
+        table tr:hover {
+            background-color: rgb(180, 140, 230);
+            transition: background-color 0.3s ease;
+        }
+
+
+        td,
+        th {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgb(123, 48, 209);
+        }
+
+        td:nth-child(1) {
+            background-color: rgb(123, 48, 209);
+            font-weight: bold;
+        }
+
+        tr:nth-child(odd) {
+            background-color: rgb(148, 91, 212);
+        }
+
+        .td-example {
+            display: block;
+            width: 100%;
+        }
+
+        .body-wrapper {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-family: "Poppins", sans-serif;
+            background-color: rgb(5, 72, 3);
+            color: white;
+            border-radius: 10px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        button:hover {
+            background-color: rgb(213, 13, 193);
+            color: rgb(0, 0, 0);
+        }
+
+        /* responsive design  */
+
+        @media screen and (max-width: 768px) {
+            .syntax {
+                width: 100%;
+            }
+
+            .table-wrapper {
+                padding: 20px;
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            table {
+                width: 720px;
+            }
+
+            .body-wrapper {
+                min-width: 780;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body-wrapper">
+        <!-- Transition property defination -->
+        <h1 class="main-heading">CSS Transition Property</h1>
+        <h3 class="heading">What is CSS Transition?</h3>
+        <p class="answer">CSS Transition allows you to make changes in CSS properties smoothly over time, instead of
+            instantly.</p>
+        <q class="syntax">transition: property duration timing-function delay;</q>
+
+        <!-- Breakdown part -->
+
+        <h3 class="heading breakdown">BreakDown</h3>
+        <!-- breakdown table  -->
+
+        <div class="table-wrapper">
+            <table id="breakdown">
+                <tr>
+                    <th>Part</th>
+                    <th>Explanation</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>property</td>
+                    <td>Which CSS Property to animate <span class="td-example">(like transform, bg-color)</span></td>
+                    <td>transform or all</td>
+                </tr>
+
+                <tr>
+                    <td>duration</td>
+                    <td>How long the animation takes?</td>
+                    <td>0.3s, 2s, 500ms</td>
+                </tr>
+
+                <tr>
+                    <td>timing-function</td>
+                    <td>Speed Curve <span class="td-example">(ease, linear, ease-in, ease-out, cubic-bezier)</span></td>
+                    <td>ease or linear</td>
+                </tr>
+
+                <tr>
+                    <td>delay</td>
+                    <td>Time to wait before starting the animation.</td>
+                    <td>0s, 2s, 0.5s, 200ms</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <h3 class="heading">Live Example</h3>
+        <div style="text-align:center;">
+            <button>
+                Hover me!
+            </button>
+        </div>
+
+    </div>
+</body>
+
+</html>

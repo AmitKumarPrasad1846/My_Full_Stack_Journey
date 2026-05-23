@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Transform Practice</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f3f3f3;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background: #4a90e2;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            transition: transform 0.4s ease;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* 1. Scale on hover */
+        .scale:hover {
+            transform: scale(1.2);
+        }
+
+        /* 2. Rotate on hover */
+        .rotate:hover {
+            transform: rotate(15deg);
+        }
+
+        /* 3. Translate on hover */
+        .translate:hover {
+            transform: translateX(50px) translateY(-20px);
+        }
+
+        /* 4. Skew on hover */
+        .skew:hover {
+            transform: skew(15deg, 5deg);
+        }
+
+        /* 5. Matrix on hover */
+        .matrix:hover {
+            transform: matrix(1, 0.3, -0.3, 1, 30, 20);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box scale">Scale</div>
+    <div class="box rotate">Rotate</div>
+    <div class="box translate">Translate</div>
+    <div class="box skew">Skew</div>
+    <div class="box matrix">Matrix</div>
+
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This page is about the CSS object fit and object-position property">
+    <title>CSS object-fit and object-position - Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: rgb(255, 0, 0);
+            --secondary-color: rgba(103, 35, 35, 0.697);
+            --third-color: rgba(215, 222, 227, 0.452);
+            --fourth-color: rgb(154, 46, 7);
+            --fifth-color: rgb(0, 0, 0);
+            --playfair-display: "Playfair Display", serif;
+            --poppins: "Poppins", sans-serif;
+            --anton: "Anton", sans-serif;
+            --oswald: "Oswald", sans-serif;
+            --cascadia-code: "Cascadia Code", monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url(Assasin\ background.jpg) no-repeat center/cover fixed;
+            color: white;
+            font-family: var(--playfair-display);
+            min-height: 100vh;
+        }
+
+        .body-wrapper {
+            border-radius: 10px;
+            background-color: var(--secondary-color);
+            margin: 20px auto;
+            padding: 10px;
+            width: 68%;
+            backdrop-filter: blur(1px);
+        }
+
+        .main-heading {
+            text-align: center;
+            font-family: var(--anton);
+            font-weight: 500;
+            font-size: 3rem;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px red;
+        }
+
+        .small-code-container {
+            border-radius: 10px;
+            background-color: var(--third-color);
+            color: black;
+            margin: 0;
+            padding: 3px 6px;
+            font-family: var(--cascadia-code);
+            backdrop-filter: blur(3px);
+        }
+
+        .heading {
+            text-align: center;
+            font-family: var(--oswald);
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: var(--fifth-color);
+            text-shadow: 0 0 12px var(--third-color);
+        }
+
+        .body-section {
+            border-radius: 10px;
+            background-color: var(--fourth-color);
+            margin: 15px;
+            padding: 10px 15px;
+            font-family: var(--poppins);
+            font-size: 1.25rem;
+            backdrop-filter: blur(5px);
+            line-height: 1.8;
+            cursor: pointer;
+        }
+
+        .coding-box {
+            border-radius: 10px;
+            background-color: #1e1e1e;
+            margin: 20px 0;
+            padding: 10px;
+            font-family: var(--cascadia-code);
+        }
+
+        .keyword {
+            color: #ce9178;
+        }
+
+        .string {
+            color: #569cd6;
+            padding-left: 40px;
+        }
+
+        .coding-footer {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background: #2d2d2d;
+            padding: 8px 20px;
+            font-size: 12px;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .language-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            width: 80px;
+            text-align: center;
+        }
+
+        .copy-btn {
+            background: #3a3a3a;
+            border: none;
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #4a4a4a;
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2.2rem;
+            }
+
+            .heading {
+                font-size: 1.6rem;
+            }
+
+            .body-section {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body-wrapper">
+        <h1 class="main-heading">
+            CSS object-fit and object-position
+        </h1>
+
+        <section class="body-section">
+            <h2 class="heading">What is Object-fit?</h2>
+            <p>
+                <code>object-fit</code> batata hai ki image ya video box ke andar kaise fit hona chahiye, bina uska
+                aspect ratio tode hue (height/width ratio).
+            </p>
+            <p>
+                Ye commonly use hota hai jab image ka fixed width & height set kiya gaya ho aur fir bhi hume usse ache
+                se fit karwana ho. Popular values:
+                <code>fill</code>, <code>contain</code>, <code>cover</code>, <code>none</code>, <code>scale-down</code>
+            </p>
+            <div class="coding-box">
+                <span class="keyword">img</span> {<br>
+                <span class="string">width</span>: 300px;<br>
+                <span class="string">height</span>: 200px;<br>
+                <span class="string">object-fit</span>: cover;<br>
+                }<br>
+                <div class="coding-footer">
+                    <span class="language-tag">CSS</span>
+                    <button class="copy-btn">Copy Code</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="body-section">
+            <h2 class="heading">What is Object-position?</h2>
+            <p>
+                <code>object-position</code> define karta hai ki image/video box ke andar kis direction me placed hogi.
+                Default value hoti hai <code>50% 50%</code> (center). Isse top, left, center, percentages sab define kar
+                sakte ho.
+            </p>
+            <div class="coding-box">
+                <span class="keyword">img</span> {<br>
+                <span class="string">width</span>: 300px;<br>
+                <span class="string">height</span>: 200px;<br>
+                <span class="string">object-fit</span>: cover;<br>
+                <span class="string">object-position</span>: top left;<br>
+                }<br>
+                <div class="coding-footer">
+                    <span class="language-tag">CSS</span>
+                    <button class="copy-btn">Copy Code</button>
+                </div>
+            </div>
+        </section>
+
+        <p style="text-align: center; font-family: var(--oswald); font-weight: 400; font-size: 1.3rem;">
+            Made with ❤️ by Amit
+        </p>
+    </div>
+
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const code = btn.closest('.coding-box').innerText;
+                navigator.clipboard.writeText(code).then(() => {
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => btn.textContent = 'Copy Code', 1500);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

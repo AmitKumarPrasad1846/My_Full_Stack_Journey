@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS fonts, text and color properties</title>
+</head>
+
+<style>
+    /* fonts style properties  */
+
+    body {
+        /* text transformation -- capitalize, uppercase, lower case, etc.  */
+        text-transform: capitalize;
+    }
+
+    h1 {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: red;
+    }
+
+
+    /* text style properties */
+
+
+    .lorem45 {
+        /* you can either use line height more than or less than 1.2 */
+        line-height: 1.8;
+        /* letter spacing can be defined as the spacing between each letters.  */
+        letter-spacing: 5px;
+    }
+
+    .p1 {
+        font-family: cursive;
+        font-style: italic;
+        font-weight: bold;
+        /* for underlining we can use text-decoration */
+        text-decoration: underline;
+        /* we can also change text underline color by using */
+        text-decoration-color: red;
+        /* we can also change the style of the underline  */
+        text-decoration-style: dotted;
+        /* we can also add text indentetion */
+        /* text-indent: 42px; */
+        /* we can also align the text  */
+        text-align: center;
+    }
+
+
+    /* color style properties  */
+
+    /* referal link for seeing colors  */
+    /* https://codepen.io/web-dot-dev/pen/ZELGraM */
+
+    h3 {
+        /* color: blueviolet; */
+        /* color: hsl(15, 60%, 29%); */
+        /* color: rgba(73, 97, 26, 0.651); */
+        /* color: rgb(134, 15, 15); */
+        color: #811616;
+    }
+</style>
+
+<body>
+    <h1>
+        Fonts
+    </h1>
+
+    <p class="p1">
+        This a text document on fonts.
+    </p>
+    <p class="lorem45">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quos architecto natus nostrum?
+        Libero eius dignissimos alias?
+    </p>
+
+    <h3>
+        This head is used for applying color style properties.
+    </h3>
+
+    <p>
+        Color can be represented in:
+    <ol>
+        <li>color keywords</li>
+        <li>Hex color Code</li>
+        <li>RGB</li>
+        <li>RGBA</li>
+        <li>HSL</li>
+    </ol>
+    </p>
+
+    <p class="coloring">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae earum cumque eos porro, ex ab neque
+        fugiat.
+    </p>
+
+    <p class="coloring">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nobis omnis eum quidem, quasi ut consequatur
+        ipsam deleniti natus magni nihil perspiciatis numquam distinctio pariatur!
+    </p>
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS transforms masterclass</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2,
+        h3 {
+            color: #3498db;
+            margin-top: 30px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .heading {
+            color: #2980b9;
+        }
+
+        .syntax {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 5px;
+        }
+
+        .code {
+            display: block;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+        }
+
+        .tip {
+            background-color: #fffde7;
+            padding: 10px 15px;
+            border-left: 4px solid #ffd600;
+            margin: 15px 0;
+        }
+
+        .bonus {
+            color: #27ae60;
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        q {
+            quotes: none;
+            font-style: italic;
+        }
+
+        /* Adding some transform examples for demonstration */
+        h1:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .code:hover {
+            transform: translateX(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .tip:hover {
+            transform: skew(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .bonus:hover {
+            transform: rotate(20deg) scale(1.2) translateX(-50px);
+            transition: transform 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS transforms</h1>
+    <h2 class="heading">transform property - magicbox of CSS</h2>
+    <p class="syntax">Syntax</p>
+    <q class="code">transform: function(value);</q>
+    <h3 class="heading">scale() - Size bda/ chhota</h3>
+    <p class="syntax">Syntax</p>
+    <q class="code">transform: scale(1.2); /* This will scale upto 120% f ots original size.*/</q>
+    <p class="tip">Tip:</p>
+    <p class="tip">It is perfect for hover effects.</p>
+    <h3 class="heading">rotate() - Ghuma do bhai</h3>
+    <p class="syntax">Syntax</p>
+    <q class="code">transform: rotate(angle); /* angle = put your desired angle here. */</q>
+    <p class="tip">Element ghoom jata hai - Jese koi image ya box ko rotate kar rhe ho.</p>
+    <h3 class="heading">translateX() & translateY() - Idhar udhar le jao.</h3>
+    <p class="syntax">Syntax</p>
+    <q class="code">transform: translateX(100px); /* 100px right */</q>
+    <q class="code">transform: translateY(-50px); /* 50px up */</q>
+    <p class="tip">Ise apply karne par esa lagta hai jese tum element ko drag karke kisi or jagah le gaye ho.</p>
+    <h3 class="heading">skew() - Tedha kar do</h3>
+    <p class="syntax">Syntax</p>
+    <q class="code">transform: skew(20 deg, 10deg);</q>
+    <p class="tip">Ise apply karne par lagta hai jese item thoda tilt ho gya hai - ye design me thoda drama add karta
+        hai.</p>
+    <h3 class="heading">matrix() - The boss of the transform properties (Advance - nut not commonly used by the
+        developers)</h3>
+    <p class="syntax">Syntax</p>
+    <q class="code">transform: matrix(a, b, c, d, e, f);</q>
+    <p class="tip">Ye sare functions ka combo hai.</p>
+    <h2 class="bonus">Bonus :- multiple transforms ek saath.</h2>
+    <p class="syntax">Syntax</p>
+    <q class="code">transform: scale(1.2) rotate(15deg) translateX(20px);</q>
+    <p class="tip">It is like a combo , ki me gym bhi ja rha hu, dance bhi kar rh ahu or chakkar bhi kaat rha hu ek
+        saath.</p>
+</body>
+
+</html>

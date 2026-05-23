@@ -1,0 +1,26 @@
+h1{
+    font-weight: bold;
+    color:black;
+}
+#inline{
+    background-color: rgb(86, 59, 110);
+    color: rgb(39, 158, 158);
+}
+#enternal{
+    background-color: rgb(212, 45, 45);
+    color: yellow;
+}
+#external{
+    background-color: rgb(21, 21, 187);
+    color: aquamarine;
+}
+.intro{
+    background-color: brown;
+    color: antiquewhite;
+}
+.service{
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(223, 11, 82);
+    color: rgb(145, 145, 32);
+}

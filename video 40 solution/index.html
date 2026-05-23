@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5 - designing a Layout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* setting all the margin and padding to 0 and applying font family */
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* defining root variables  */
+
+        :root {
+            --color1: rgb(34, 120, 126);
+            --color2: rgba(79, 136, 141, 0.782);
+        }
+
+        body {
+            background-color: var(--color2);
+        }
+
+        /* arranginging the header abd footer  */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        nav {
+            display: flex;
+            background-color: var(--color1);
+            font-size: 13px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            border-radius: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            margin: 4px;
+            padding: 8px;
+        }
+
+        nav ul li {
+            border: 1px solid rgba(16, 16, 8, 0.712);
+            border-radius: 10px;
+            margin: 2px;
+            padding: 5px 10px;
+        }
+
+        nav ul li:hover {
+            color: black;
+            background-color: var(--color2);
+            transition: all 0.3s linear;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+        }
+
+        /* aligning both the containers intro and about us side by side  */
+        .section {
+            display: flex;
+            justify-content: center;
+            /* center horizontally */
+            align-items: flex-start;
+            /* align to top */
+            gap: 40px;
+            /* space between boxes */
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        /* fixing the layout of introductiona dn about  */
+        .intro,
+        .about {
+            width: 40vw;
+            height: 60vh;
+            background-color: rgb(166, 22, 188);
+            color: rgb(19, 8, 8);
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(144, 11, 226, 0.886);
+            padding: 10px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, color 0.3s;
+            overflow: hidden;
+
+        }
+
+        /* animating introduction and About us section  */
+        .intro:hover,
+        .about:hover {
+            transform: scale(1.02);
+        }
+
+        .text-container {
+            border: 1px solid black;
+            border-radius: 15px;
+            width: 60vw;
+            text-align: center;
+            margin: 20px auto;
+            /*it will automatically adjust the block to center from left to right*/
+            padding: 20px 40px;
+            overflow: auto;
+            background-color: rgb(53, 98, 138);
+            font-weight: 600;
+        }
+
+        /* resizing image size */
+        .fixed-element img {
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+        }
+
+        .fixed-element {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+        }
+
+        /* designing footer  */
+        footer {
+            background-color: rgb(4, 54, 92);
+            color: aliceblue;
+            text-align: center;
+            font-size: 20px;
+            margin-top: 15px;
+            padding: 5px 10px;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>Hey there! - this is exercise 5 (designing a Layout)</h1> -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="s monogram.png" alt="Brand logo">
+            </div>
+            <ul>
+                <li><a href="Design this layout.png">Home</a></li>
+                <li><a href="Design this layout.png">Join us</a></li>
+                <li><a href="Design this layout.png">About</a></li>
+                <li><a href="Design this layout.png">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="section">
+            <section class="intro">
+                <h1>Introduction</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea sunt qui deserunt laudantium? Harum
+                    veritatis
+                    nihil provident iusto nostrum voluptatem unde, dicta labore voluptates, inventore, doloribus natus
+                    repellendus? Fuga, vitae.</p>
+                <br>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, distinctio unde laudantium
+                    sapiente adipisci ex?</p>
+            </section>
+            <section class="about">
+                <h1>About us</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis beatae architecto laborum ipsam magni
+                    dignissimos blanditiis nesciunt iste cum? Commodi unde mollitia ut vero vitae eos ipsam repellat
+                    doloribus tempora.</p>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, corporis!</p>
+            </section>
+        </div>
+        <div class="text-container">
+            <section>
+                <h1 style="font-size: 30px;">WELCOME TO SARK!</h1>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore dolorem, ipsa, nihil itaque
+                    provident libero aut delectus mollitia voluptate reprehenderit vitae consequuntur possimus sint
+                    asperiores.
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    <br>
+                    Dignissimos omnis libero, delectus esse
+                    sint praesentium veritatis deserunt, numquam odit saepe error rerum facere voluptatem? Numquam quia
+                    ex cupiditate, porro veritatis mollitia quae quos itaque quis.
+                </p>
+            </section>
+        </div>
+        <div class="fixed-element">
+            <img src="s monogram.png" alt="Brand logo">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Copyright SARK 2025; All rights reserved</p>
+    </footer>
+</body>
+
+</html>

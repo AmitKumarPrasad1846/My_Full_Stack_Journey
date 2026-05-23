@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three types of CSS</title>
+</head>
+<style>
+    /* Element Selector */
+    h1 {
+        font-weight: bold;
+        color: black;
+    }
+
+    /* Id selector */
+    #inline {
+        background-color: rgb(86, 59, 110);
+        color: rgb(37, 185, 185);
+    }
+
+    #enternal {
+        background-color: rgb(72, 218, 15);
+        color: rgb(32, 29, 206);
+    }
+
+    #external {
+        background-color: rgb(230, 12, 146);
+        color: rgb(111, 243, 243);
+    }
+
+    /* class Selector */
+    .intro {
+        background-color: rgb(3, 3, 3);
+        color: antiquewhite;
+    }
+
+    .service {
+        background-color: rgb(43, 54, 75);
+        color: rgb(175, 112, 29);
+    }
+
+    /* Descndent Selector */
+    div p {
+        background-color: rgb(20, 51, 20);
+    }
+
+    /* child selector */
+    div>p {
+        background-color: rgb(15, 54, 88);
+    }
+    /* universal selector */
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    /* pseudo selector  */
+    a:visited{
+        color: red;
+    }
+    a:link{
+        color: rgb(235, 231, 15);
+    }
+    a:active{
+        color: lightcoral;
+    }
+    a:hover{
+        background-color: red;
+    }
+
+    /* p:first-child{
+        background-color: black;
+    } */
+</style>
+<!-- <link rel="stylesheet" href="style.css"> -->
+
+<body
+    style="background-color: rgb(206, 98, 98); color: rgb(23, 211, 218);font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 18px;">
+    <h1>Today we will learn three types of CSS:-</h1>
+    <ol>
+        <li id="inline">Inline CSS - Here we add a <q>style</q> attribute to each element.</li>
+        <li id="enternal">Enternal CSS - Here we create a &lt;style&gt;.....&lt;/style&gt; inside the same HTML file.
+        </li>
+        <li id="external">External CSS - Here we create a different CSS file and then we link the file with the help of
+            following code:</li>
+        <q><i>
+                &lt;link rel="stylesheet" href="style.css"&gt;
+            </i></q>
+    </ol>
+    <p class="intro">Hey there!</p>
+    <p class="service">We're SARK. How can we help you today?</p>
+
+    <a href="https://www.youtube.com">Youtube</a>
+
+
+    <h3>Look down below this a div tag - Where I am trying child selector and descendent selector :</h3>
+
+    <div>
+        <h1>Hi! how are you ?</h1>
+        <p>this is Amit kumar Prasad, I am creating my dream.</p>
+        <article>
+            <p>Recently I have started my Coding Journey again.</p>
+        </article>
+    </div>
+    <p style="background-color: red; color: white;font-size: 24px;">
+        We should take care of Priority lists of CSS Selector.
+    </p>
+    <footer style="
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    background-color: aliceblue;
+    color: black;
+    ">
+
+        copyright &copy; SARK; All rights reserved.
+    </footer>
+</body>
+
+</html>

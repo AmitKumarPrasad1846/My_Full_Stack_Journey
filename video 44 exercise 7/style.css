@@ -1,0 +1,293 @@
+/* setting margin and padding equal to zero and box-sizing to border-box.*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* fixing the layout of logo. */
+#website-logo img {
+    display: flex;
+    width: auto;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 5px;
+}
+
+/* giving some background color. */
+body {
+    background-color: rgb(242, 237, 228);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* making the header. */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    padding: 1rem 2rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 10px;
+    padding: 5px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+}
+
+/* main portion style  */
+
+.about-ultraedit {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 85%;
+    min-width: 50%;
+    width: 600px;
+}
+
+.ue-heading {
+    font-size: 3rem;
+    font-weight: 380;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.ue-heading span {
+    font-weight: bold;
+}
+
+.ue-heading-text {
+    margin: 5px;
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+.ue-heading-download a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.ue-heading-download {
+    display: inline-block;
+    background-color: rgb(11, 130, 210);
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.ue-downloads {
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+        "download1 download2 download3"
+        "download4 download5 download6"
+        "download7 download8 download9";
+    gap: 20px;
+    margin: 5px auto;
+    padding: 25px;
+    text-align: center;
+}
+
+.download-box {
+    background-color: rgb(214, 214, 208);
+    border-radius: 10px;
+    margin: 0;
+    padding: 15px;
+    width: 300px;
+    height: max-content;
+}
+
+.download-btn {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: rgb(17, 147, 8);
+    margin: 10px;
+    padding: 10px;
+}
+
+.download-btn a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.download-btn:hover {
+    background-color: darkgreen;
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+}
+
+
+.download-text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+}
+
+/* styling the invitation part */
+
+.black-part {
+    background-color: rgb(26, 25, 25);
+    color: white;
+    margin: 0;
+    padding: 4rem;
+}
+
+.joining-invitation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin: 1rem;
+    padding-bottom: 2rem;
+}
+
+.joining-invitation-text {
+    width: 40%;
+}
+
+.ue-heading-black {
+    margin: 5px;
+    padding: 3px;
+}
+
+/* form designing */
+
+#joining-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: aliceblue;
+    margin: 5px;
+    padding: 1.75rem;
+    width: 30%;
+}
+
+.form-heading {
+    color: rgb(37, 135, 201);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+#joining-form label {
+    display: block;
+    color: black;
+    margin-top: 35px;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#joining-form input[type="email"] {
+    border: 1px solid rgba(59, 59, 59, 0.836);
+    border-radius: 5px;
+    width: 100%;
+    margin: 0;
+    padding: 12px;
+}
+
+#joining-form button {
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(11, 130, 210);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#joining-form button:hover {
+    background-color: #0097a7;
+    transform: scale(1.01);
+}
+
+.msi-installer-file {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-top: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.msi-installer-file h3 {
+    margin: 5px 0;
+    padding: 5px 0;
+}
+
+.ue-heading-black-text {
+    margin: 5px 0;
+    padding: 0;
+}
+
+.ue-heading-black-text a {
+    text-decoration: none;
+    color: rgb(11, 130, 210);
+}
+
+footer {
+    text-align: center;
+    margin: 0;
+    padding: 15px;
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+/* adding media queries */
+
+@media (max-width: 768px) {
+    .ue-heading {
+        font-size: 2rem;
+    }
+
+    .ue-downloads {
+        grid-template-columns: 1fr;
+        /* Saare box ek column mein aa jaayein */
+        grid-template-rows: auto;
+        grid-template-areas: none;
+        /* Grid area hataya */
+    }
+
+    .download-box {
+        width: 90%;
+        margin: auto;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+}

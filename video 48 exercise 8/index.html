@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="this is a web page on CSS bouncing animation">
+    <title>CSS animation - A bouncing animation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(163, 36, 36);
+        }
+
+        /* Designing the main screen */
+
+        .body-wrapper {
+            position: relative;
+            /*it will make the ball always inside the body wrapper.*/
+            border-radius: 5px;
+            border-bottom: 20px solid black;
+            background-color: rgb(255, 208, 0);
+            width: 700px;
+            height: 500px;
+            overflow: hidden;
+            /* ball box se bahar na jaye isliye*/
+            margin: 20px auto;
+            padding: 10px;
+            padding-bottom: 0;
+        }
+
+        /* styling the text part */
+
+        .text {
+            text-align: center;
+            font-family: "Anton", sans-serif;
+            font-size: 3rem;
+            margin: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        /* Let's give the ball an engine. */
+
+        .ball {
+            position: absolute;
+            left: 5px;
+            bottom: 0;
+            width: 80px;
+            height: 80px;
+            background-color: rgb(231, 12, 12);
+            border: 2px solid black;
+            border-radius: 50%; /* 40px -> 50% better, perfect gol! */
+            /* Now the animation part */
+            animation: bounce 5s linear infinite;
+            transform-origin: bottom center;
+
+            /* enable it if needed */
+            /* animation-direction: alternate; */
+        }
+
+        /* with the help of translate(X, Y) we can move an object in X and Y axis simultanously. */
+
+        /* Har land par Y = 0 hai → ball “ground” touch karti hai. */
+
+        @keyframes bounce {
+            /* frame   X, Y  */
+            0% {
+                transform: translate(0px, 0);
+            }
+            20% {
+                transform: translate(140px, -120px);
+            }
+            /* First bounce */
+            40% {
+                transform: translate(280px, 0) scaleY(0.8);/* Scale - iske karan thoda sqashy and real feel dega*/
+            }
+            60% {
+                transform: translate(420px, -60px);
+            }
+            /* Second Bounce */
+            80% {
+                transform: translate(560px, 0) scaleY(0.85);
+            }
+            /* Goal line  */
+            100% {
+                transform: translate(700px, -30px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body-wrapper">
+        <div class="ball"></div>
+        <div class="text">CSS Bounce Animation</div>
+    </div>
+</body>
+
+</html>

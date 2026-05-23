@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UltraEdit Website nav design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* setting margin and padding equal to zero and box-sizing to border-box.*/
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* fixing the layout of logo. */
+        #website-logo img {
+            display: flex;
+            width: 100px;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        /* giving some background color. */
+        body {
+            background-color: grey;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* making the header. */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 10px;
+            padding: 5px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="website-logo">
+            <img src="https://www.ultraedit.com/wp-content/uploads/2023/01/Background-2.png" alt="UltraEdit logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">For business</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Academic licensing</a></li>
+                <li><a href="#">Our company</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+
+</html>

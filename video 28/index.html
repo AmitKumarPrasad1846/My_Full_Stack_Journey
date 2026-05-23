@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS position property</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(16, 32, 16);
+        color: white;
+        font-family: poppins;
+    }
+
+    .box {
+        height: 133px;
+        width: 80vw;
+        padding: 3px;
+        margin: 3px;
+        border: 2px solid white
+    }
+
+    .box1 {
+        background-color: skyblue;
+        position: relative;
+        /* To align the box on top or bottom we use "Z-index" property.  */
+        /* for using "z-index" property we must put the position static to position relative to the respctive element.  */
+        /* to position any element on top or bottom we must fix the "Z-index" value more or less respectively.  */
+        z-index: 4;
+    }
+
+    .box2 {
+        background-color: green;
+        /* sets the position with respect to nearest position static.  */
+        /* position relative means that the box will pop from  its current position. -- Hence it will become egligible for application of properties such as top and bottom. */
+        position: relative;
+        /* It will make the box2 to lie over the top of box1.  */
+        top: -48px;
+        /* It will slide (Towards right side) the box2 over box1 by 45px.  */
+        left: 45px;
+
+    }
+
+    .box3 {
+        background-color: red;
+    }
+
+    .box4 {
+        background-color: peru;
+    }
+</style>
+
+<body>
+    <h1>CSS Position property:</h1>
+    <p>We use this property for arrangement of elements.</p>
+
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+</body>
+
+</html>

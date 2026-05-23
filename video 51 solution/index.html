@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="this page is about CSS bouncing Animation">
+    <title>Exercise 8 - Solution (CSS Bouncing animation)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #878e0b;
+        }
+
+        .container {
+            position: relative;
+            border-radius: 20px;
+            border-bottom: 20px solid #000000;
+            width: 700px;
+            height: 500px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #0000ff;
+            color: #f0f8ff;
+            text-align: center;
+            font-family: "Poppins", sans-serif;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            left: -15px;
+            bottom: 0;
+            border: 3px solid #f0f8ff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background-color: #0aa20a;
+            animation: translateX 4s linear infinite, translateY 1s ease-out infinite alternate;
+        }
+
+        @keyframes translateX {
+            from {
+                left: -15px;
+            }
+            to {
+                left: 100%;
+            }
+        }
+
+        @keyframes translateY {
+            from {
+                bottom: 0;
+            }
+            to {
+                bottom: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="heading">
+            CSS Bouncing Animation
+        </h1>
+        <div class="circle"></div>
+    </div>
+</body>
+
+</html>

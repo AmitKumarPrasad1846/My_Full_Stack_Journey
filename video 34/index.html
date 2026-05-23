@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS float & clear</title>
+</head>
+<style>
+    .cards {
+        border: 2px solid black;
+    }
+
+    .card {
+        border: 4px solid red;
+        /* this flow root property will make the border to adjust according to image size.  */
+        display: flow-root;
+    }
+
+    .img {
+        /* this float left will allow the image to float on the left side.  */
+        float: left;
+        /* this float property will allow the image to float on the right side of the image.  */
+        /* float: right; */
+    }
+
+    .card:nth-child(3) {
+        /* this clear property doesn't allow the floating of the image on the left side of the element.  */
+
+        clear: left;
+        /* this clear property doesn't allow the right side floating of the image.  */
+
+        /* clear: right; */
+        /* this clear property doesn't allow the floating of the image on its eiter side of the elements.  */
+
+        /* clear: both; */
+    }
+
+    .keynote {
+        background-color: aquamarine;
+        text-align: center;
+        margin: 10px;
+        padding: 5px;
+    }
+
+    .heading,
+    .solution {
+        font-family: poppins;
+        text-transform: capitalize;
+    }
+</style>
+
+<body>
+    <!-- CSS float & clear -->
+    <div class="img">
+        <img src="https://th.bing.com/th/id/OIP.7cRYFyLoDEDh4sRtM73vvwHaDg?w=302&h=180&c=7&r=0&o=7&cb=iwp1&pid=1.7&rm=3"
+            alt="nature Image" width="250px">
+    </div>
+    <div class="cards">
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+    </div>
+
+    <div class="keynote">
+        <h1 class="heading">what is float and clear property?</h1>
+        <p class="solution">this float and clear property was used in the layout management of the news articles ( in
+            the previous era of the web revolution ).</p>
+        <p class="solution">but now the days these concepts or propeties of CSS is not used commonly.</p>
+    </div>
+</body>
+
+</html>

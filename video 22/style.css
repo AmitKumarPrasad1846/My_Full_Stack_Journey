@@ -1,0 +1,73 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    color: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.question {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 30px;
+    color: #ff6f00;
+    text-shadow: 0 0 10px rgba(255, 111, 0, 0.7);
+    animation: fadeIn 2s ease-in-out;
+    letter-spacing: 1.5px;
+}
+
+.answer {
+    font-size: 1.3rem;
+    color: #00e5ff;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+    margin-bottom: 30px;
+    animation: slideIn 1.5s ease-in-out;
+    font-weight: 500;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    animation: fadeIn 2s ease-in-out;
+    display: inline-block;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+li {
+    background: rgba(255, 255, 255, 0.05);
+    color: #9eff9e;
+    font-size: 1.1rem;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-left: 5px solid #00ffcc;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 255, 204, 0.2);
+    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(4px);
+}
+
+li:hover {
+    transform: scale(1.03) translateX(5px);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    border-left: 5px solid #ff6f00;
+    color: #ffffff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

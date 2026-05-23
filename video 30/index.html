@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Variables</title>
+</head>
+<style>
+    /* setting all margin and padding -- 0 */
+    /* using universal selector */
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    /* we use :root for creating variables.  */
+    /* Now creating Variable colors using :root  */
+    /* If you want to use these values you must use = var(______); */
+    /* CSS variables can hold any type of values, strings, numbers etc. */
+    :root {
+        --color: rgb(219, 53, 80);
+        --seccolor: rgb(233, 142, 157);
+        --pcolor: rgb(212, 152, 162);
+    }
+
+    .head {
+        font-size: 35px;
+        font-family: sans-serif;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+    }
+
+    ul li {
+        padding: 15px;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+
+    .nav-bar {
+        background-color: var(--color);
+    }
+    h1{
+        background-color: var(--seccolor);
+    }
+    p{
+        background-color: var(--pcolor);
+    }
+    nav ul a{
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+    nav ul a li:hover{
+        background-color: var(--seccolor);
+        color: grey;
+        transform: all 0.3s ease;
+    }
+</style>
+
+<body>
+    <!-- CSS Variables -->
+    <header class="head">
+        CSS Variables
+    </header>
+    <nav class="nav-bar">
+        <ul>
+            <a href="#"><li>Home</li></a>
+            <a href="#"><li>About</li></a>
+            <a href="#"><li>Contact Us</li></a>
+        </ul>
+    </nav>
+    <h1 style="text-transform: capitalize;">This page is about CSS Variables ?</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt vel beatae est aut doloribus dolor atque?
+        Impedit numquam quibusdam aliquam repudiandae asperiores natus temporibus optio nam alias nobis facere
+        consequatur possimus laborum corrupti dolor eos voluptate animi velit, ad quis, amet earum fugiat quidem
+        laboriosam. Debitis, quibusdam pariatur, saepe tenetur, optio repellendus officiis magnam facere itaque non
+        dolorem illo. Distinctio ea consequuntur optio nam dolor.</p>
+</body>
+
+</html>
