@@ -21,7 +21,7 @@ Escape Sequence characters are as follows:
 
 let name = 'Adam D'Angelo' --> this makes the JavaScript confuse about which apastrophee should be used.
 
-So in such case we introduce backslash ---> \
+So in such case we introduce back slash ---> \
 the backslash makes the JavaScript to jump by one character.
 so we wirte 'Angelo D'Angelo' as 'Angelo D\'Angelo'
 */
