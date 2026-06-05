@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>✨ Glassmorph Faulty Calc · Smart Notes ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 30%, #1a2a3a, #0b0f17);
+            font-family: 'Segoe UI', 'Inter', 'Poppins', system-ui, -apple-system, 'Courier New', monospace;
+            padding: 2rem 1.5rem;
+            position: relative;
+        }
+
+        /* glass background effect + subtle animated grain */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(2px);
+            background: rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* main container grid: calculator + notes panel */
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* glass morphism core style */
+        .glass-card {
+            background: rgba(25, 35, 55, 0.45);
+            backdrop-filter: blur(16px);
+            border-radius: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 220, 150, 0.5);
+            box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* inner panels */
+        .calc-panel {
+            padding: 1.8rem;
+        }
+
+        .notes-panel {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* headings with glass touch */
+        .glass-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(125deg, #fff8e7, #ffdfb0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-glitch {
+            background: rgba(255, 100, 70, 0.25);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 0.2rem 0.9rem;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #ffcf9a;
+            border: 1px solid rgba(255, 160, 80, 0.5);
+            font-family: monospace;
+        }
+
+        .sub-gloss {
+            font-size: 0.75rem;
+            color: #ccddee;
+            border-left: 3px solid #f0b27a;
+            padding-left: 12px;
+            margin-top: 6px;
+            margin-bottom: 1.5rem;
+            font-family: monospace;
+            opacity: 0.9;
+        }
+
+        /* inputs */
+        .input-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            background: rgba(10, 20, 30, 0.4);
+            border-radius: 80px;
+            padding: 0.2rem 0.2rem 0.2rem 1.2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .input-row label {
+            font-weight: 600;
+            width: 55px;
+            color: #ffecce;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .glass-input {
+            flex: 1;
+            background: rgba(255, 255, 245, 0.15);
+            border: 1px solid rgba(255, 215, 150, 0.5);
+            border-radius: 60px;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+            color: #fff3e0;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .glass-input:focus {
+            background: rgba(30, 45, 65, 0.7);
+            border-color: #ffbc6e;
+            box-shadow: 0 0 12px rgba(255, 180, 80, 0.3);
+            color: white;
+        }
+
+        /* operator glass buttons */
+        .operator-group {
+            margin: 1rem 0 1.2rem 0;
+        }
+
+        .operator-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .op-glass {
+            background: rgba(20, 30, 45, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 200, 130, 0.6);
+            font-size: 1.6rem;
+            font-weight: bold;
+            font-family: monospace;
+            width: 65px;
+            padding: 8px 0;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.15s;
+            color: #fff2dd;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .op-glass.active {
+            background: #ffbc6e;
+            color: #1e2a2f;
+            border-color: white;
+            box-shadow: 0 0 12px #ffbc6e;
+            text-shadow: 0 0 2px white;
+        }
+
+        .op-glass:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 180, 90, 0.8);
+            color: #121212;
+        }
+
+        .calc-action {
+            width: 100%;
+            background: linear-gradient(95deg, #f3a683, #e9854b);
+            border: none;
+            padding: 0.9rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 60px;
+            color: #1e1a15;
+            font-family: monospace;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin: 1rem 0 1rem 0;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .calc-action:active {
+            transform: scale(0.97);
+        }
+
+        /* result sticky glass */
+        .result-glass {
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(12px);
+            border-radius: 1.8rem;
+            padding: 1rem 1.4rem;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(255, 215, 160, 0.4);
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: #ffddb0;
+            border-bottom: 1px dashed #ffcf8a;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+        }
+
+        .result-number {
+            font-size: 1.9rem;
+            font-weight: 800;
+            font-family: 'Courier New', monospace;
+            word-break: break-word;
+            color: #fbeccd;
+            text-align: center;
+            padding: 0.4rem;
+        }
+
+        .glitch-tag {
+            font-size: 0.7rem;
+            background: #ff885533;
+            border-radius: 24px;
+            display: inline-block;
+            padding: 4px 12px;
+            margin-top: 6px;
+        }
+
+        /* ========= NOTES SECTION (fully functional) ========= */
+        .notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+            gap: 10px;
+        }
+
+        .notes-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #fbdd9f, #ffc284);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .add-note-btn {
+            background: rgba(255, 200, 120, 0.25);
+            backdrop-filter: blur(5px);
+            border: 1px solid #ffd494;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: monospace;
+            color: #ffe1b3;
+            transition: 0.2s;
+        }
+
+        .add-note-btn:hover {
+            background: #ffbc6e;
+            color: #1e2a2a;
+        }
+
+        .note-textarea {
+            background: rgba(20, 30, 45, 0.7);
+            border: 1px solid rgba(255, 200, 140, 0.6);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            width: 100%;
+            color: #fff3e0;
+            font-family: 'Segoe UI', monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+            outline: none;
+            margin-bottom: 1rem;
+        }
+
+        .note-textarea:focus {
+            border-color: #ffbc6e;
+            box-shadow: 0 0 10px rgba(255, 180, 80, 0.4);
+        }
+
+        .notes-list-container {
+            max-height: 380px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+            padding-right: 4px;
+        }
+
+        /* individual note card glass */
+        .note-card {
+            background: rgba(30, 40, 58, 0.55);
+            backdrop-filter: blur(8px);
+            border-radius: 1.2rem;
+            padding: 0.8rem 1rem;
+            border-left: 5px solid #f0b27a;
+            transition: 0.15s;
+            position: relative;
+            word-break: break-word;
+        }
+
+        .note-card:hover {
+            background: rgba(45, 60, 85, 0.7);
+            transform: translateX(6px);
+        }
+
+        .note-text {
+            color: #fef0db;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 8px;
+        }
+
+        .note-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.6rem;
+            color: #eec994;
+            border-top: 1px dashed rgba(255, 215, 150, 0.4);
+            padding-top: 6px;
+            margin-top: 4px;
+        }
+
+        .delete-note {
+            background: none;
+            border: none;
+            color: #ffaf7a;
+            cursor: pointer;
+            font-size: 0.7rem;
+            padding: 0 6px;
+            border-radius: 20px;
+            transition: 0.1s;
+        }
+
+        .delete-note:hover {
+            color: #ff6b4a;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .empty-notes {
+            text-align: center;
+            padding: 2rem;
+            color: #ccbb99;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        /* scrollbar */
+        .notes-list-container::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .notes-list-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 200, 0.1);
+            border-radius: 10px;
+        }
+
+        .notes-list-container::-webkit-scrollbar-thumb {
+            background: #f0b27a;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 850px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            body {
+                padding: 1rem;
+            }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #b8cfef;
+            font-size: 0.7rem;
+            opacity: 0.7;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+        <!-- LEFT: FAULTY CALCULATOR with GLASS -->
+        <div class="glass-card calc-panel">
+            <div>
+                <div class="glass-title">
+                    🧮 FAULTY·CALC
+                    <span class="badge-glitch">⚠️ 10% wrong-op</span>
+                </div>
+                <div class="sub-gloss">
+                    + → – &nbsp;&nbsp; * → + &nbsp;&nbsp; – → / &nbsp;&nbsp; / → ** &nbsp;&nbsp;| glitch chance 10%
+                </div>
+            </div>
+
+            <div class="input-row">
+                <label>🔢 A</label>
+                <input type="number" id="numA" class="glass-input" placeholder="First number" value="24">
+            </div>
+
+            <div class="operator-group">
+                <div style="color:#ddcca8; font-size:0.7rem; margin-bottom:6px;">✧ pick operator</div>
+                <div class="operator-buttons" id="opSelector">
+                    <button data-op="+" class="op-glass active">+</button>
+                    <button data-op="-" class="op-glass">−</button>
+                    <button data-op="*" class="op-glass">×</button>
+                    <button data-op="/" class="op-glass">÷</button>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <label>🔢 B</label>
+                <input type="number" id="numB" class="glass-input" placeholder="Second number" value="7">
+            </div>
+
+            <button id="calcButton" class="calc-action">⚡ GLITCH CALCULATE ⚡</button>
+
+            <!-- result area -->
+            <div class="result-glass">
+                <div class="result-header">
+                    <span>📌 LIVE RESULT</span>
+                    <span>✨ faulty note</span>
+                </div>
+                <div class="result-number" id="resultDisplay">— —</div>
+                <div id="glitchDetail" class="glitch-tag">⚡ waiting for calc</div>
+            </div>
+        </div>
+
+        <!-- RIGHT: NOTES WEBSITE (fully functional + add custom notes) -->
+        <div class="glass-card notes-panel">
+            <div class="notes-header">
+                <div class="notes-title">📝 GLASS NOTES · DIARY</div>
+                <button id="addNoteBtn" class="add-note-btn">+ New Note</button>
+            </div>
+            <textarea id="noteInput" class="note-textarea" rows="2"
+                placeholder="Write your thought, reminder, or calculation memory... ✨"></textarea>
+
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 6px 6px;">
+                <span style="font-size: 0.7rem; color:#e5cca2;">📌 your notes appear below</span>
+                <button id="clearAllNotesBtn"
+                    style="background: none; border: none; color:#ffb570; font-size:0.65rem; cursor:pointer;">🗑️ clear
+                    all notes</button>
+            </div>
+            <div id="notesListContainer" class="notes-list-container">
+                <!-- dynamic notes will appear here -->
+                <div class="empty-notes">✨ No notes yet. Write something above and click +New Note</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        ⚡ faulty calculator uses random 10% chance → wrong operation map. <br>
+        📎 Notes are saved in your browser (localStorage). They persist even after refresh.
+    </footer>
+
+    <script>
+        // ---------- FAULTY CALCULATOR LOGIC (10% glitch) ----------
+        let currentOperator = '+';
+        const opBtns = document.querySelectorAll('.op-glass');
+        const numAInput = document.getElementById('numA');
+        const numBInput = document.getElementById('numB');
+        const calcBtn = document.getElementById('calcButton');
+        const resultDisplaySpan = document.getElementById('resultDisplay');
+        const glitchDetailSpan = document.getElementById('glitchDetail');
+
+        // operator selector UI
+        function setOperatorUI(op) {
+            currentOperator = op;
+            opBtns.forEach(btn => {
+                const btnOp = btn.getAttribute('data-op');
+                if (btnOp === op) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+        }
+
+        opBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selected = btn.getAttribute('data-op');
+                setOperatorUI(selected);
+            });
+        });
+
+        // correct calculation (safe)
+        function computeCorrect(a, b, op) {
+            let n1 = parseFloat(a);
+            let n2 = parseFloat(b);
+            if (isNaN(n1) || isNaN(n2)) return { error: true, msg: "invalid number" };
+            switch (op) {
+                case '+': return n1 + n2;
+                case '-': return n1 - n2;
+                case '*': return n1 * n2;
+                case '/':
+                    if (n2 === 0) return "Division by Zero";
+                    return n1 / n2;
+                default: return NaN;
+            }
+        }
+
+        // faulty calculation according to map
+        function computeFaulty(a, b, originalOp) {
+            let n1 = parseFloat(a);
+            let n2 = parseFloat(b);
+            if (isNaN(n1) || isNaN(n2)) return { error: true, msg: "invalid" };
+            const faultMap = {
+                "+": "-",
+                "*": "+",
+                "-": "/",
+                "/": "**"
+            };
+            const wrongOp = faultMap[originalOp];
+            if (!wrongOp) return "unknown op";
+            if (wrongOp === "**") return Math.pow(n1, n2);
+            if (wrongOp === "/") {
+                if (n2 === 0) return "∞ Div/0 (faulty)";
+                return n1 / n2;
+            }
+            if (wrongOp === "+") return n1 + n2;
+            if (wrongOp === "-") return n1 - n2;
+            return "faulty error";
+        }
+
+        // glitch result with 10% probability
+        function getGlitchedResult(aStr, bStr, op) {
+            const rand = Math.random();
+            const isFaulty = rand < 0.1;   // 10% glitch
+
+            let resultValue;
+            let usedOpMsg = "";
+            let operationNote = "";
+
+            if (!isFaulty) {
+                const correctRes = computeCorrect(aStr, bStr, op);
+                if (typeof correctRes === 'object' && correctRes.error) {
+                    resultValue = correctRes.msg;
+                } else {
+                    resultValue = correctRes;
+                }
+                operationNote = `✓ CORRECT (${op})`;
+                usedOpMsg = op;
+            } else {
+                // GLITCH MODE: wrong operation
+                const faultyRes = computeFaulty(aStr, bStr, op);
+                if (typeof faultyRes === 'object' && faultyRes.error) {
+                    resultValue = faultyRes.msg;
+                } else {
+                    resultValue = faultyRes;
+                }
+                const faultMapDisplay = { "+": "-", "*": "+", "-": "/", "/": "**" };
+                const wrongSymbol = faultMapDisplay[op];
+                operationNote = `⚠️ GLITCH ACTIVATED! wrong op: ${op} → ${wrongSymbol}`;
+                usedOpMsg = wrongSymbol;
+            }
+
+            let finalDisplay;
+            if (typeof resultValue === 'number' && !isNaN(resultValue)) {
+                if (!Number.isFinite(resultValue)) finalDisplay = "∞ Infinite";
+                else finalDisplay = Number.isInteger(resultValue) ? resultValue.toString() : resultValue.toFixed(5);
+            } else {
+                finalDisplay = String(resultValue);
+            }
+            return { result: finalDisplay, isFaulty, operationNote, rawValue: resultValue };
+        }
+
+        // main calculation + also auto-add note to notes panel (as a smart note)
+        function runCalculation() {
+            let aRaw = numAInput.value.trim();
+            let bRaw = numBInput.value.trim();
+            let op = currentOperator;
+
+            if (aRaw === "" || bRaw === "") {
+                resultDisplaySpan.innerText = "⚠️ missing number";
+                glitchDetailSpan.innerText = "enter both values";
+                return;
+            }
+            let aNum = parseFloat(aRaw);
+            let bNum = parseFloat(bRaw);
+            if (isNaN(aNum) || isNaN(bNum)) {
+                resultDisplaySpan.innerText = "❌ invalid number";
+                glitchDetailSpan.innerText = "use numeric values";
+                return;
+            }
+
+            const { result, isFaulty, operationNote } = getGlitchedResult(aRaw, bRaw, op);
+            const opSymbol = op === '*' ? '×' : (op === '/' ? '÷' : op);
+            const expression = `${aNum} ${opSymbol} ${bNum}`;
+            resultDisplaySpan.innerText = `${expression} = ${result}`;
+            glitchDetailSpan.innerHTML = operationNote;
+
+            // ✨ auto add calculation as a note to the notes system (so that everything appears in notes)
+            const timestamp = new Date().toLocaleString();
+            const glitchEmoji = isFaulty ? "🔮 [FAULTY]" : "✅ [CORRECT]";
+            const calcNoteContent = `${glitchEmoji} ${expression} = ${result}  (${timestamp})`;
+            // add this calculation note to notes storage
+            addCustomNote(calcNoteContent);
+        }
+
+        calcBtn.addEventListener('click', runCalculation);
+        document.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && (document.activeElement === numAInput || document.activeElement === numBInput)) {
+                runCalculation();
+            }
+        });
+
+        // ---------- COMPLETE NOTES SYSTEM (with localStorage) ----------
+        let notesArray = [];   // store { id, text, timestamp }
+
+        // DOM elements for notes
+        const notesContainer = document.getElementById('notesListContainer');
+        const noteTextarea = document.getElementById('noteInput');
+        const addNoteBtn = document.getElementById('addNoteBtn');
+        const clearAllNotesBtn = document.getElementById('clearAllNotesBtn');
+
+        // load notes from localStorage
+        function loadNotesFromStorage() {
+            const stored = localStorage.getItem('glassy_notes_faulty');
+            if (stored) {
+                try {
+                    notesArray = JSON.parse(stored);
+                } catch (e) { notesArray = []; }
+            } else {
+                // add some example notes to make it lively
+                notesArray = [
+                    { id: Date.now() + 1, text: "💡 Tip: Faulty calculator has 10% chance to swap operations! Use it wisely.", timestamp: new Date().toLocaleString() },
+                    { id: Date.now() + 2, text: "📐 Example: 5 + 3 might become 5 - 3 if glitch strikes.", timestamp: new Date().toLocaleString() }
+                ];
+            }
+            renderNotes();
+        }
+
+        function saveNotesToStorage() {
+            localStorage.setItem('glassy_notes_faulty', JSON.stringify(notesArray));
+        }
+
+        // render notes from array
+        function renderNotes() {
+            if (!notesContainer) return;
+            if (notesArray.length === 0) {
+                notesContainer.innerHTML = `<div class="empty-notes">✨ No notes yet. Write something and click +New Note<br>Calculations also auto-save as notes!</div>`;
+                return;
+            }
+            notesContainer.innerHTML = '';
+            // reverse order to show newest first
+            [...notesArray].reverse().forEach(note => {
+                const noteCard = document.createElement('div');
+                noteCard.className = 'note-card';
+                noteCard.innerHTML = `
+                <div class="note-text">${escapeHtml(note.text)}</div>
+                <div class="note-meta">
+                    <span>🕒 ${note.timestamp || 'just now'}</span>
+                    <button class="delete-note" data-id="${note.id}">🗑️ delete</button>
+                </div>
+            `;
+                notesContainer.appendChild(noteCard);
+            });
+
+            // attach delete events
+            document.querySelectorAll('.delete-note').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(btn.getAttribute('data-id'));
+                    deleteNoteById(id);
+                });
+            });
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>]/g, function (m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function (c) {
+                return c;
+            });
+        }
+
+        function deleteNoteById(id) {
+            notesArray = notesArray.filter(n => n.id !== id);
+            saveNotesToStorage();
+            renderNotes();
+        }
+
+        // add custom note (from user textarea or from calculation)
+        function addCustomNote(content = null) {
+            let noteText = content;
+            if (noteText === null || noteText === undefined || noteText.trim() === "") {
+                // get from textarea
+                const rawText = noteTextarea.value.trim();
+                if (rawText === "") {
+                    alert("Please write something in the note box!");
+                    return;
+                }
+                noteText = rawText;
+                noteTextarea.value = ""; // clear after adding
+            }
+            const newNote = {
+                id: Date.now(),
+                text: noteText,
+                timestamp: new Date().toLocaleString()
+            };
+            notesArray.unshift(newNote);  // add to beginning for freshness
+            // but keep order consistent: we reverse in render, better keep chronological, but unshift fine.
+            // Actually we want latest on top: unshift works
+            saveNotesToStorage();
+            renderNotes();
+            if (!content) {
+                // small subtle effect
+                noteTextarea.placeholder = "✨ Note added! Write another...";
+                setTimeout(() => { noteTextarea.placeholder = "Write your thought, reminder, or calculation memory... ✨"; }, 1500);
+            }
+        }
+
+        function clearAllNotes() {
+            if (confirm("⚠️ Delete ALL notes? This action is permanent.")) {
+                notesArray = [];
+                saveNotesToStorage();
+                renderNotes();
+            }
+        }
+
+        // attach event listeners for notes
+        addNoteBtn.addEventListener('click', () => addCustomNote(null));
+        clearAllNotesBtn.addEventListener('click', clearAllNotes);
+
+        // optional: allow pressing ctrl+enter in textarea to add note
+        noteTextarea.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                addCustomNote(null);
+            }
+        });
+
+        // initial load
+        loadNotesFromStorage();
+
+        // Set default operator active
+        setOperatorUI('+');
+
+        // Console random for fun (like original)
+        console.log("✨ Glassy Faulty Calculator with Notes — Random seed ready, glitch 10%");
+        window.addEventListener('load', () => {
+            const initRand = Math.random();
+            console.log(`[Faulty] initial random % : ${(initRand * 100).toFixed(1)}%`);
+            resultDisplaySpan.innerText = "— ready —";
+        });
+    </script>
+</body>
+
+</html>

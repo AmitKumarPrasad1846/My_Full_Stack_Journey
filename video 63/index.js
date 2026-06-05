@@ -15,7 +15,7 @@ console.log(arr[2])
 console.log(arr[4])
 
 // type of array is : object 
-console.log(typeof(arr))
+console.log(typeof (arr))
 
 //Property of array
 a = [1, 2, 3, 4, 5, 6, 7, 8]
@@ -44,3 +44,10 @@ let a2 = [4, 5, 6]
 let a3 = [7, 8, 9]
 
 a1.concat(a2, a3)  // Output: Returns [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+// sort method
+let a = [78, 48, 94];
+a.sort() // output: [48, 78, 94]
+
+const n = [1, 2, 3, 4, 5]
+n.splice(2, 1, 23, 24) // it means - start from index 2 and remove (1) one no. and add 23 and 24.

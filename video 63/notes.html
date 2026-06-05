@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📚 JavaScript Arrays · Complete Notes Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 100%);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Fira Code', monospace;
+            padding: 2rem 1.5rem;
+            color: #e2e8f0;
+        }
+
+        /* main container */
+        .notes-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* header with wave */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            background: linear-gradient(125deg, #60a5fa, #a78bfa, #f472b6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            border-bottom: 1px dashed #334155;
+            display: inline-block;
+            padding-bottom: 6px;
+        }
+
+        .badge-array {
+            background: #1e293b;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            color: #c084fc;
+            font-family: monospace;
+            margin-top: 12px;
+            display: inline-block;
+        }
+
+        /* two column layout: notes + interactive */
+        .notes-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 1.8rem;
+        }
+
+        /* card style */
+        .card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            background: #0f172a;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #1e293b;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #cbd5e1;
+        }
+
+        .card-header i {
+            font-size: 1.3rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        /* topics list */
+        .topic-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .topic-item {
+            background: #1e293b;
+            border-radius: 1rem;
+            padding: 0.9rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .topic-item:hover {
+            background: #2d3a5e;
+            transform: translateX(6px);
+        }
+
+        .topic-item.active {
+            background: #1e3a8a;
+            border-left-color: #facc15;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .topic-title {
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 5px;
+        }
+
+        .topic-desc {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        /* code block styling */
+        .code-block {
+            background: #0a0f1a;
+            border-radius: 1rem;
+            padding: 1rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            border: 1px solid #2d3a5e;
+            margin: 1rem 0;
+            color: #bbd7fb;
+        }
+
+        .method-signature {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 0.5rem 1rem;
+            font-family: monospace;
+            font-weight: bold;
+            color: #facc15;
+            margin: 12px 0;
+        }
+
+        .example-run {
+            background: #0f172a;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1.2rem;
+            border: 1px solid #334155;
+        }
+
+        .example-run button {
+            background: #3b82f6;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 8px 6px 0 0;
+            font-family: monospace;
+            transition: 0.1s;
+        }
+
+        .example-run button:hover {
+            background: #2563eb;
+            transform: scale(0.97);
+        }
+
+        .output-area {
+            background: #020617;
+            border-radius: 12px;
+            padding: 8px 12px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #a5f3c3;
+            border-left: 3px solid #22c55e;
+        }
+
+        hr {
+            border-color: #334155;
+            margin: 1rem 0;
+        }
+
+        /* interactive playground section */
+        .playground {
+            margin-top: 1rem;
+        }
+
+        .array-visual {
+            background: #0f172a;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .array-badge {
+            background: #3b82f6;
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid #475569;
+            border-radius: 12px;
+            padding: 10px;
+            color: white;
+            font-family: monospace;
+            margin: 6px 0;
+        }
+
+        .flex-btns {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 12px 0;
+        }
+
+        @media (max-width: 850px) {
+            .notes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #475569;
+            border-top: 1px solid #1e293b;
+            padding-top: 1.5rem;
+        }
+
+        .note-tip {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 10px;
+            font-size: 0.75rem;
+            margin-top: 12px;
+            color: #cbd5e6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="notes-container">
+        <div class="hero">
+            <h1>📦 JavaScript Arrays</h1>
+            <p>complete reference · methods · interactive examples</p>
+            <div class="badge-array">🔹 length | 🔸 map/filter/reduce | 🔹 mutating vs non-mutating</div>
+        </div>
+
+        <div class="notes-grid">
+            <!-- LEFT SIDE: TOPICS / NOTES MENU -->
+            <div class="card">
+                <div class="card-header">
+                    <span>📚</span> Array Methods & Concepts
+                </div>
+                <div class="card-content">
+                    <div class="topic-list" id="topicList">
+                        <div class="topic-item active" data-topic="intro">
+                            <div class="topic-title">📌 Introduction & Creation</div>
+                            <div class="topic-desc">literal, constructor, Array.of, Array.from</div>
+                        </div>
+                        <div class="topic-item" data-topic="basics">
+                            <div class="topic-title">🔧 Basic Operations</div>
+                            <div class="topic-desc">push, pop, shift, unshift, length, indexOf</div>
+                        </div>
+                        <div class="topic-item" data-topic="iteration">
+                            <div class="topic-title">🔄 Iteration Methods</div>
+                            <div class="topic-desc">forEach, map, filter, reduce, some, every</div>
+                        </div>
+                        <div class="topic-item" data-topic="mutating">
+                            <div class="topic-title">✂️ Mutating Methods</div>
+                            <div class="topic-desc">splice, sort, reverse, fill, copyWithin</div>
+                        </div>
+                        <div class="topic-item" data-topic="nonmutating">
+                            <div class="topic-title">📋 Non-Mutating</div>
+                            <div class="topic-desc">slice, concat, flat, flatMap, toReversed, toSorted</div>
+                        </div>
+                        <div class="topic-item" data-topic="search">
+                            <div class="topic-title">🔍 Search & Access</div>
+                            <div class="topic-desc">find, findIndex, includes, indexOf, lastIndexOf, at</div>
+                        </div>
+                        <div class="topic-item" data-topic="advanced">
+                            <div class="topic-title">⚡ Advanced & Tricks</div>
+                            <div class="topic-desc">reduce advanced, chaining, destructuring, spread</div>
+                        </div>
+                    </div>
+                    <div class="note-tip">
+                        💡 Tip: Click any topic to see detailed notes + live examples. Try the interactive playground on
+                        the right!
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE: DYNAMIC NOTES + INTERACTIVE PLAYGROUND -->
+            <div class="card">
+                <div class="card-header">
+                    <span>✨</span> Detailed Notes & Live Playground
+                </div>
+                <div class="card-content" id="dynamicContent">
+                    <!-- dynamic notes loaded based on topic -->
+                    <div id="notesDetailArea">
+                        <div class="code-block">// Welcome to JS Arrays Notes! <br>// Click any topic on left to
+                            explore.<br>// Below you can also test array methods →</div>
+                    </div>
+
+                    <!-- INTERACTIVE SANDBOX (always visible) -->
+                    <hr>
+                    <div class="playground">
+                        <div style="font-weight: bold; margin-bottom: 8px;">🧪 INTERACTIVE ARRAY PLAYGROUND</div>
+                        <div>
+                            <label style="font-size:0.7rem;">Current Array:</label>
+                            <div class="array-visual" id="arrayVisual">
+                                <span class="array-badge">[1, 2, 3, 4]</span>
+                            </div>
+                            <input type="text" id="arrayInput" placeholder='e.g., [10, 20, 30, 40] or comma: 5,6,7,8'
+                                value="[1, 2, 3, 4]">
+                            <div class="flex-btns">
+                                <button id="updateArrayBtn">🔄 Update Array</button>
+                                <button id="pushBtn">push(5)</button>
+                                <button id="popBtn">pop()</button>
+                                <button id="mapDoubleBtn">map(x=>x*2)</button>
+                                <button id="filterEvenBtn">filter(even)</button>
+                                <button id="reduceSumBtn">reduce(sum)</button>
+                                <button id="reverseBtn">reverse()</button>
+                            </div>
+                            <div class="output-area" id="playgroundOutput">
+                                ▶️ Output will appear here
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            📘 JavaScript Arrays — Master all methods with notes & examples | Built with 💙
+        </footer>
+    </div>
+
+    <script>
+        // ---------- DATA: DETAILED NOTES FOR EACH TOPIC (rich content) ----------
+        const notesData = {
+            intro: {
+                title: "📌 Array Creation & Basics",
+                content: `
+                <div class="method-signature">🔹 Array Literal (most common)</div>
+                <div class="code-block">const fruits = ['apple', 'banana', 'mango'];</div>
+                <div class="method-signature">🔸 Array Constructor</div>
+                <div class="code-block">const arr = new Array(5);       // creates empty slots length 5<br>const nums = new Array(1,2,3);  // [1,2,3]</div>
+                <div class="method-signature">🔹 Array.of() / Array.from()</div>
+                <div class="code-block">Array.of(7);       // [7] <br>Array.from('hello'); // ['h','e','l','l','o']</div>
+                <div class="note-tip">✨ <strong>Key property:</strong> .length – dynamic & mutable. Arrays are zero-indexed.</div>
+                <div class="example-run">
+                    <button id="demoIntro">▶ Run Example: create & log</button>
+                    <div id="introOut" class="output-area" style="margin-top:8px;">click to see output</div>
+                </div>
+            `
+            },
+            basics: {
+                title: "🔧 Basic Operations (Stack/Queue)",
+                content: `
+                <div class="method-signature">➕ push() / pop()  (end)</div>
+                <div class="code-block">let arr = [1,2]; arr.push(3); // [1,2,3] <br>arr.pop(); // returns 3, arr → [1,2]</div>
+                <div class="method-signature">➖ unshift() / shift() (beginning)</div>
+                <div class="code-block">arr.unshift(0); // [0,1,2] <br>arr.shift(); // removes first</div>
+                <div class="method-signature">🔍 indexOf / includes / length</div>
+                <div class="code-block">[10,20,30].indexOf(20); // 1 <br>[1,2,3].includes(2); // true</div>
+                <div class="example-run">
+                    <button id="demoBasics">▶ Run: push/pop & indexOf example</button>
+                    <div id="basicsOut" class="output-area"></div>
+                </div>
+            `
+            },
+            iteration: {
+                title: "🔄 Iteration: forEach, map, filter, reduce",
+                content: `
+                <div class="method-signature">🔁 forEach – iterate</div>
+                <div class="code-block">[1,2].forEach(v => console.log(v));</div>
+                <div class="method-signature">✨ map – transform</div>
+                <div class="code-block">[1,2,3].map(x => x*2); // [2,4,6]</div>
+                <div class="method-signature">🎯 filter – keep condition</div>
+                <div class="code-block">[5,12,8,3].filter(n => n>5); // [12,8]</div>
+                <div class="method-signature">📊 reduce – accumulator</div>
+                <div class="code-block">[1,2,3,4].reduce((sum,cur)=> sum+cur, 0); // 10</div>
+                <div class="example-run">
+                    <button id="demoMapFilterReduce">▶ map+filter+reduce chain demo</button>
+                    <div id="iterOut" class="output-area"></div>
+                </div>
+            `
+            },
+            mutating: {
+                title: "✂️ Mutating Methods (change original)",
+                content: `
+                <div class="method-signature">✂️ splice(start, deleteCount, items)</div>
+                <div class="code-block">let arr = [1,2,3,4]; arr.splice(1,2); // [2,3] removed, arr becomes [1,4]</div>
+                <div class="method-signature">🔄 sort() / reverse()</div>
+                <div class="code-block">[3,1,4].sort(); // [1,3,4] <br>[10,2,5].sort((a,b)=>a-b); // numeric sort</div>
+                <div class="method-signature">📝 fill(value, start, end) / copyWithin</div>
+                <div class="code-block">new Array(3).fill(0); // [0,0,0]</div>
+                <div class="note-tip">⚠️ sort() mutates & converts elements to strings by default; provide compare function for numbers.</div>
+                <div class="example-run">
+                    <button id="demoMutate">▶ splice & sort demo</button>
+                    <div id="mutateOut" class="output-area"></div>
+                </div>
+            `
+            },
+            nonmutating: {
+                title: "📋 Non-Mutating (return new array)",
+                content: `
+                <div class="method-signature">🍕 slice(start, end)</div>
+                <div class="code-block">[1,2,3,4].slice(1,3); // [2,3] (original unchanged)</div>
+                <div class="method-signature">➕ concat / spread</div>
+                <div class="code-block">[1,2].concat([3,4]); // [1,2,3,4] <br>[...arr1, ...arr2]</div>
+                <div class="method-signature">🌀 flat / flatMap</div>
+                <div class="code-block">[1,[2,3]].flat(); // [1,2,3]</div>
+                <div class="method-signature">✨ ES2023: toReversed(), toSorted()</div>
+                <div class="code-block">const rev = [1,2,3].toReversed(); // [3,2,1] without mutating</div>
+                <div class="example-run">
+                    <button id="demoNonMutate">▶ slice & concat demo</button>
+                    <div id="nonmutOut" class="output-area"></div>
+                </div>
+            `
+            },
+            search: {
+                title: "🔍 Search Methods",
+                content: `
+                <div class="method-signature">find / findIndex</div>
+                <div class="code-block">[5,12,8].find(n => n>10); // 12<br>[5,12,8].findIndex(n=>n>10); // 1</div>
+                <div class="method-signature">includes / indexOf / lastIndexOf</div>
+                <div class="code-block">const arr = [10,20,30,20]; arr.indexOf(20); // 1, lastIndexOf(20) → 3</div>
+                <div class="method-signature">🔹 at() method (negative indexing)</div>
+                <div class="code-block">[1,2,3].at(-1); // 3</div>
+                <div class="example-run">
+                    <button id="demoSearch">▶ find & includes example</button>
+                    <div id="searchOut" class="output-area"></div>
+                </div>
+            `
+            },
+            advanced: {
+                title: "⚡ Advanced Patterns & Tricks",
+                content: `
+                <div class="method-signature">🔥 Reduce advanced: grouping / flatten</div>
+                <div class="code-block">const grouped = arr.reduce((acc, val) => { acc[val] = (acc[val]||0)+1; return acc;}, {});</div>
+                <div class="method-signature">✨ Destructuring & rest operator</div>
+                <div class="code-block">const [first, second] = [10,20,30]; // first=10, second=20<br>const [...rest] = arr;</div>
+                <div class="method-signature">⚡ Chaining methods for clean code</div>
+                <div class="code-block">numbers.filter(n => n>2).map(n => n*3).reduce((a,b)=>a+b,0);</div>
+                <div class="example-run">
+                    <button id="demoAdvanced">▶ Advanced reduce (frequency counter)</button>
+                    <div id="advancedOut" class="output-area"></div>
+                </div>
+            `
+            }
+        };
+
+        // current active topic
+        let currentTopic = "intro";
+
+        // render notes into dynamic area
+        function renderTopic(topicId) {
+            const data = notesData[topicId];
+            if (!data) return;
+            const detailArea = document.getElementById("notesDetailArea");
+            if (!detailArea) return;
+            let html = `<div style="margin-bottom: 6px;"><h3 style="color:#c084fc;">${data.title}</h3></div>`;
+            html += data.content;
+            detailArea.innerHTML = html;
+            attachDemoEventHandlers(topicId);
+        }
+
+        // attach interactive buttons for demo based on topic
+        function attachDemoEventHandlers(topicId) {
+            // remove previous global listeners? we attach fresh each time, but we can bind safely
+            if (topicId === "intro") {
+                const btn = document.getElementById("demoIntro");
+                if (btn) btn.onclick = () => {
+                    const arrLiteral = ['apple', 'banana', 'mango'];
+                    const fromHello = Array.from('hello');
+                    document.getElementById("introOut").innerHTML = `✅ Array literal: [${arrLiteral}] <br>✅ Array.from('hello'): [${fromHello}]`;
+                };
+            }
+            if (topicId === "basics") {
+                const btn = document.getElementById("demoBasics");
+                if (btn) btn.onclick = () => {
+                    let demoArr = [10, 20, 30];
+                    demoArr.push(40);
+                    const popped = demoArr.pop();
+                    const idx = demoArr.indexOf(20);
+                    document.getElementById("basicsOut").innerHTML = `After push(40) & pop(): [${demoArr}], popped value: ${popped}, indexOf(20): ${idx}`;
+                };
+            }
+            if (topicId === "iteration") {
+                const btn = document.getElementById("demoMapFilterReduce");
+                if (btn) btn.onclick = () => {
+                    const numbers = [1, 2, 3, 4, 5, 6];
+                    const result = numbers.filter(n => n % 2 === 0).map(n => n * 10).reduce((acc, cur) => acc + cur, 0);
+                    document.getElementById("iterOut").innerHTML = `Original: [${numbers}] → filter even → map(x10) → sum = ${result}`;
+                };
+            }
+            if (topicId === "mutating") {
+                const btn = document.getElementById("demoMutate");
+                if (btn) btn.onclick = () => {
+                    let arr = [5, 3, 8, 1, 2];
+                    const spliced = [...arr];
+                    spliced.splice(2, 1);
+                    const sorted = [...arr].sort((a, b) => a - b);
+                    document.getElementById("mutateOut").innerHTML = `Original: [5,3,8,1,2]<br>After splice(index2,1): [${spliced}] <br>Sorted copy (non-mutating demo): [${sorted}]`;
+                };
+            }
+            if (topicId === "nonmutating") {
+                const btn = document.getElementById("demoNonMutate");
+                if (btn) btn.onclick = () => {
+                    const original = [1, 2, 3, 4];
+                    const sliced = original.slice(1, 3);
+                    const concatenated = original.concat([5, 6]);
+                    document.getElementById("nonmutOut").innerHTML = `Original: [${original}] <br>slice(1,3): [${sliced}]<br>concat + [5,6]: [${concatenated}]<br>Original unchanged: [${original}]`;
+                };
+            }
+            if (topicId === "search") {
+                const btn = document.getElementById("demoSearch");
+                if (btn) btn.onclick = () => {
+                    const arr = [15, 30, 45, 30];
+                    const found = arr.find(val => val > 25);
+                    const has30 = arr.includes(30);
+                    const lastIdx = arr.lastIndexOf(30);
+                    document.getElementById("searchOut").innerHTML = `Array: [${arr}]<br>find(val>25): ${found}<br>includes(30): ${has30}<br>lastIndexOf(30): ${lastIdx}`;
+                };
+            }
+            if (topicId === "advanced") {
+                const btn = document.getElementById("demoAdvanced");
+                if (btn) btn.onclick = () => {
+                    const fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+                    const freq = fruits.reduce((acc, fruit) => {
+                        acc[fruit] = (acc[fruit] || 0) + 1;
+                        return acc;
+                    }, {});
+                    document.getElementById("advancedOut").innerHTML = `Frequency Counter: ${JSON.stringify(freq)}<br>Original array length: ${fruits.length}`;
+                };
+            }
+        }
+
+        // topic selection & active style
+        function initTopicSwitching() {
+            const topics = document.querySelectorAll('.topic-item');
+            topics.forEach(topic => {
+                topic.addEventListener('click', () => {
+                    const topicId = topic.getAttribute('data-topic');
+                    if (!topicId) return;
+                    // update active class
+                    topics.forEach(t => t.classList.remove('active'));
+                    topic.classList.add('active');
+                    currentTopic = topicId;
+                    renderTopic(topicId);
+                });
+            });
+        }
+
+        // ---------- INTERACTIVE PLAYGROUND GLOBALS (array playground) ----------
+        let currentPlayArray = [1, 2, 3, 4];
+        const arrayVisualSpan = document.getElementById("arrayVisual");
+        const arrayInputField = document.getElementById("arrayInput");
+        const playgroundOutput = document.getElementById("playgroundOutput");
+
+        function updateArrayVisual() {
+            if (arrayVisualSpan) {
+                arrayVisualSpan.innerHTML = currentPlayArray.map(v => `<span class="array-badge">${v}</span>`).join('');
+            }
+        }
+
+        function setArrayFromInput() {
+            let val = arrayInputField.value.trim();
+            try {
+                if (val.startsWith('[') && val.endsWith(']')) {
+                    let parsed = JSON.parse(val);
+                    if (Array.isArray(parsed)) currentPlayArray = parsed;
+                    else throw new Error();
+                } else {
+                    let parts = val.split(',').map(v => {
+                        let num = parseFloat(v.trim());
+                        return isNaN(num) ? v.trim() : num;
+                    });
+                    if (parts.length && !(parts.length === 1 && parts[0] === "")) currentPlayArray = parts;
+                    else currentPlayArray = [];
+                }
+            } catch (e) {
+                playgroundOutput.innerHTML = "⚠️ Invalid array format. Use [1,2,3] or 1,2,3";
+                return false;
+            }
+            updateArrayVisual();
+            playgroundOutput.innerHTML = `✅ Array updated: [${currentPlayArray.join(', ')}]`;
+            return true;
+        }
+
+        function playgroundAction(action, ...args) {
+            let arr = [...currentPlayArray];
+            let result;
+            switch (action) {
+                case 'push':
+                    arr.push(5);
+                    result = arr;
+                    playgroundOutput.innerHTML = `push(5) → [${arr.join(', ')}]`;
+                    break;
+                case 'pop':
+                    let popped = arr.pop();
+                    result = arr;
+                    playgroundOutput.innerHTML = `pop() → removed ${popped}, new array [${arr.join(', ')}]`;
+                    break;
+                case 'mapDouble':
+                    result = arr.map(x => typeof x === 'number' ? x * 2 : x);
+                    playgroundOutput.innerHTML = `map(x=>x*2) → [${result.join(', ')}]`;
+                    break;
+                case 'filterEven':
+                    result = arr.filter(x => typeof x === 'number' && x % 2 === 0);
+                    playgroundOutput.innerHTML = `filter(even numbers) → [${result.join(', ')}]`;
+                    break;
+                case 'reduceSum':
+                    let sum = arr.reduce((acc, cur) => typeof cur === 'number' ? acc + cur : acc, 0);
+                    playgroundOutput.innerHTML = `reduce(sum) → total = ${sum}`;
+                    result = arr;
+                    break;
+                case 'reverse':
+                    result = [...arr].reverse();
+                    playgroundOutput.innerHTML = `reverse() → [${result.join(', ')}] (original unchanged)`;
+                    break;
+                default: return;
+            }
+            if (action !== 'reduceSum') currentPlayArray = result;
+            updateArrayVisual();
+            if (action !== 'reduceSum' && action !== 'reverse') updateArrayVisual();
+            if (action === 'reverse') {
+                // we don't mutate current, just display. But for consistency keep array as is
+            } else if (action !== 'reduceSum') updateArrayVisual();
+        }
+
+        // attach global playground events
+        document.getElementById("updateArrayBtn")?.addEventListener('click', () => setArrayFromInput());
+        document.getElementById("pushBtn")?.addEventListener('click', () => playgroundAction('push'));
+        document.getElementById("popBtn")?.addEventListener('click', () => playgroundAction('pop'));
+        document.getElementById("mapDoubleBtn")?.addEventListener('click', () => playgroundAction('mapDouble'));
+        document.getElementById("filterEvenBtn")?.addEventListener('click', () => playgroundAction('filterEven'));
+        document.getElementById("reduceSumBtn")?.addEventListener('click', () => playgroundAction('reduceSum'));
+        document.getElementById("reverseBtn")?.addEventListener('click', () => playgroundAction('reverse'));
+
+        // init first render
+        renderTopic("intro");
+        initTopicSwitching();
+        updateArrayVisual();
+        // set default array in visual
+        currentPlayArray = [1, 2, 3, 4];
+        arrayInputField.value = "[1, 2, 3, 4]";
+        updateArrayVisual();
+    </script>
+</body>
+
+</html>
